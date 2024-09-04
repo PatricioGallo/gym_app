@@ -1,26 +1,3 @@
-//
-//  ViewController.swift
-//  ControladorDeVistas
-//
-//  Created by Pato Gallo on 28/08/2024.
-//
-
-//import UIKit
-//
-//class ViewController: UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view.
-//        self.title = "Rutinas"
-//    }
-//
-//    @IBAction func buttonEjercicio(_ sender: Any) {
-//        performSegue(withIdentifier: "RWeeks", sender: self)
-//    }
-//
-//}
-
 import UIKit
 
 struct Ejercicio: Codable {
@@ -49,16 +26,16 @@ struct Persona: Codable {
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
     var personas: [Persona] = []
+    var persona_2: Persona?
     let myCellWidth = UIScreen.main.bounds.width
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
-        collectionView.register(UINib(nibName: "myCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
+        collectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
         collectionView.delegate = self
-        
+        self.title = "Rutinas"
         loadData()
     }
     
@@ -204,6 +181,8 @@ class ViewController: UIViewController {
             print("Error al decodificar el JSON: \(error)")
         }
     }
+    
+    
 }
 
 extension ViewController:UICollectionViewDataSource {
@@ -225,12 +204,25 @@ extension ViewController:UICollectionViewDataSource {
 }
 
 extension ViewController: UICollectionViewDelegate {
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let persona = personas[indexPath.row]
+        persona_2 = persona
         print("\(indexPath.section) \(indexPath.row) \(persona.nombre) \(persona.apellido) - \(persona.edad) años")
         // Imprime más información si lo necesitas
+        performSegue(withIdentifier: "weeks_path", sender: self)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "weeks_path" {
+            if let destinoVC = segue.destination as? MyWeeksViewController {
+//                if let personaSeleccionada = sender as? Persona {
+//                    // Asignar la persona seleccionada a la vista destino
+//                    destinoVC.persona = personaSeleccionada
+//                }
+                destinoVC.persona = persona_2
+            }
+        }
+    }
+
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
@@ -238,6 +230,4 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: myCellWidth, height: myCellWidth/2)
     }
 }
-
-
 

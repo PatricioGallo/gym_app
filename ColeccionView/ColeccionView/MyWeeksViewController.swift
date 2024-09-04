@@ -1,19 +1,24 @@
 //
-//  ViewControllerProfile.swift
-//  ControladorDeVistas
+//  MyWeeksViewController.swift
+//  ColeccionView
 //
-//  Created by Pato Gallo on 28/08/2024.
+//  Created by Pato Gallo on 04/09/2024.
 //
 
 import UIKit
 
-class ViewControllerProfile: UIViewController {
+class MyWeeksViewController: UIViewController {
+
+    @IBOutlet weak var myLabel: UILabel!
+    var persona: Persona? // Propiedad para recibir la persona seleccionada
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Perfil"
-    }
-    
+        if let persona = persona {
+                    myLabel.text = "\(persona.nombre) \(persona.apellido) - \(persona.edad) años"
+                }
+}
+
 
     /*
     // MARK: - Navigation

@@ -30,4 +30,3 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
 }
 
-

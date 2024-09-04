@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  ControladorDeVistas
+//  ColeccionView
 //
-//  Created by Pato Gallo on 28/08/2024.
+//  Created by Pato Gallo on 03/09/2024.
 //
 
 import UIKit

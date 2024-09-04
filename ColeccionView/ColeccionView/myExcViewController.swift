@@ -1,17 +1,17 @@
 //
-//  ViewControllerGraphs.swift
-//  ControladorDeVistas
+//  myExcViewController.swift
+//  ColeccionView
 //
-//  Created by Pato Gallo on 28/08/2024.
+//  Created by Pato Gallo on 04/09/2024.
 //
 
 import UIKit
 
-class ViewControllerGraphs: UIViewController {
+class myExcViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Graficos"
+        self.title = "Ejercicios"
     }
     
 
