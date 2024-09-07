@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var personas: [Persona] = []
     var persona_2: Persona?
+    var rutinas: [Rutina] = []
     let myCellWidth = UIScreen.main.bounds.width
     
     override func viewDidLoad() {
@@ -207,18 +208,16 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let persona = personas[indexPath.row]
         persona_2 = persona
-        print("\(indexPath.section) \(indexPath.row) \(persona.nombre) \(persona.apellido) - \(persona.edad) años")
-        // Imprime más información si lo necesitas
+        rutinas = persona.rutinas
+//        print("\(rutinas)")
+//        print("\(indexPath.section) \(indexPath.row) \(persona.nombre) \(persona.apellido) - \(persona.edad) años")
+//        // Imprime más información si lo necesitas
         performSegue(withIdentifier: "weeks_path", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weeks_path" {
             if let destinoVC = segue.destination as? MyWeeksViewController {
-//                if let personaSeleccionada = sender as? Persona {
-//                    // Asignar la persona seleccionada a la vista destino
-//                    destinoVC.persona = personaSeleccionada
-//                }
-                destinoVC.persona = persona_2
+                destinoVC.rutinas = rutinas
             }
         }
     }
