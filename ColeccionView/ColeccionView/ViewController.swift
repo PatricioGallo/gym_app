@@ -32,7 +32,7 @@ struct Persona: Codable {
     let rutinas: [Rutina]
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,rutinaViewCellDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var persona: Persona?
@@ -578,75 +578,64 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return persona!.rutinas.count+2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if(indexPath.row == 0){
+        switch (indexPath.row){
+        case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hcell", for: indexPath) as! headerCell
             if let personaVar = persona {
                 cell.myLabel.text = "\(personaVar.nombre) \(personaVar.apellido)"
             }
             return cell
-        }else if (indexPath.row == 1){
+        case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! infoViewCell
             if let personaVar = persona {
                 cell.labelTitle.text = "\(personaVar.nombre) repasa tus ultimos pesos"
                 cell.labelMid.text = "75 KG"
             }
             return cell
-        } else if (indexPath.row == 2){
+        case 2:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rutinaCell", for: indexPath) as! rutinaViewCell
             if let personaVar = persona {
                 cell.rutinas = personaVar.rutinas
+                cell.delegate = self
             }
             return cell
-        }else if (indexPath.row > 2){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rutinaCell", for: indexPath) as! rutinaViewCell
             if let personaVar = persona {
-                cell.myLabel.text = personaVar.rutinas[indexPath.row-2].nombre
+                cell.rutinas = personaVar.rutinas
+                cell.delegate = self
             }
-            return cell
-        } else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
-            if let personaVar = persona {
-                cell.myLabel.text = personaVar.rutinas[indexPath.row-2].nombre
-            }
-            return cell
-        }
-        
+            return cell        }
     }
 }
 
-//extension ViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        if let semanaDelegate = persona {
-//            semanas = semanaDelegate.rutinas[indexPath.row].semanas
-//        }
-//        performSegue(withIdentifier: "weeks_path", sender: self)
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "weeks_path" {
-//            if let destinoVC = segue.destination as? MyWeeksViewController {
-//                destinoVC.semanas = self.semanas
-//            }
-//        }
-//    }
-//}
+extension ViewController: UICollectionViewDelegate {
+    func didSelectRutina(semanas: [Semana]) {
+        // Maneja la lógica para realizar el segue o la navegación
+        performSegue(withIdentifier: "weeks_path", sender: semanas)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "weeks_path",
+           let semanas = sender as? [Semana],
+           let destinationVC = segue.destination as? MyWeeksViewController {
+            destinationVC.semanas = semanas
+        }
+    }
+}
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         if(indexPath.row == 0){
             return CGSize(width: myCellWidth, height: myCellWidth/4)
-        }else if (indexPath.row == 1 || indexPath.row  > 2){
+        }else if (indexPath.row == 1){
             return CGSize(width: myCellWidth, height: myCellWidth/2)
         }else if (indexPath.row == 2){
             return CGSize(width: myCellWidth, height: myCellWidth)
