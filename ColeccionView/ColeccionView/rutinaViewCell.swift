@@ -5,11 +5,14 @@ class rutinaViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var myTable: UITableView!
     @IBOutlet weak var myView: UIView!
+    var rutinas:[Rutina]?
+    var semanas:[Semana]?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         //Souces
         myTable.dataSource = self
+        myTable.delegate = self
         myTable.register(UINib(nibName: "rutinaTableViewCell", bundle: nil), forCellReuseIdentifier: "rutCell")
         //Atributos
         myTable.backgroundColor = UIColor(red: 0.05, green: 0.05, blue: 0.05, alpha: 1.0)
@@ -27,12 +30,22 @@ class rutinaViewCell: UICollectionViewCell {
 
 extension rutinaViewCell: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return rutinas!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rutCell", for: indexPath) as! rutinaTableViewCell
+        cell.firstLabel.text = "\(rutinas![indexPath.row].nombre)"
+        cell.secondLabel.text = "30%"
         return cell
+    }
+    
+}
+
+extension rutinaViewCell: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        semanas = rutinas![indexPath.row].semanas
+//        performSegue(withIdentifier: "weeks_path", sender: self)
     }
     
 }

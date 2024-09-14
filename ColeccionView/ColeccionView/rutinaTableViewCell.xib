@@ -25,15 +25,41 @@
                             <constraint firstAttribute="width" constant="50" id="gDb-iV-sbd"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKE-w3-96a">
+                        <rect key="frame" x="110" y="0.0" width="42" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="1HD-v5-JJR"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHq-lE-wwZ">
+                        <rect key="frame" x="172" y="0.0" width="42" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Mi3-iL-OgZ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="HOB-fI-k7h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="A3e-JS-uub"/>
+                    <constraint firstItem="XKE-w3-96a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Bo9-Q2-gkB"/>
+                    <constraint firstItem="YHq-lE-wwZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="D37-h1-FFr"/>
+                    <constraint firstItem="XKE-w3-96a" firstAttribute="leading" secondItem="HOB-fI-k7h" secondAttribute="trailing" constant="30" id="QvR-QT-fL7"/>
+                    <constraint firstItem="YHq-lE-wwZ" firstAttribute="leading" secondItem="XKE-w3-96a" secondAttribute="trailing" constant="20" id="RFy-UX-hGd"/>
                     <constraint firstItem="HOB-fI-k7h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="hT9-bq-IP7"/>
+                    <constraint firstAttribute="bottom" secondItem="XKE-w3-96a" secondAttribute="bottom" id="k2l-1v-H1G"/>
+                    <constraint firstAttribute="bottom" secondItem="YHq-lE-wwZ" secondAttribute="bottom" id="sRI-Vp-T0b"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="firstLabel" destination="XKE-w3-96a" id="sJ4-fl-msH"/>
                 <outlet property="myCell" destination="H2p-sc-9uM" id="qV7-M9-PMg"/>
+                <outlet property="secondLabel" destination="YHq-lE-wwZ" id="jbI-MM-A7T"/>
             </connections>
             <point key="canvasLocation" x="189.85507246376812" y="87.053571428571431"/>
         </tableViewCell>

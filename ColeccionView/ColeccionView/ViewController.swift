@@ -603,6 +603,9 @@ extension ViewController: UICollectionViewDataSource {
             return cell
         } else if (indexPath.row == 2){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "rutinaCell", for: indexPath) as! rutinaViewCell
+            if let personaVar = persona {
+                cell.rutinas = personaVar.rutinas
+            }
             return cell
         }else if (indexPath.row > 2){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
@@ -621,22 +624,22 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let semanaDelegate = persona {
-            semanas = semanaDelegate.rutinas[indexPath.row].semanas
-        }
-        performSegue(withIdentifier: "weeks_path", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "weeks_path" {
-            if let destinoVC = segue.destination as? MyWeeksViewController {
-                destinoVC.semanas = self.semanas
-            }
-        }
-    }
-}
+//extension ViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        if let semanaDelegate = persona {
+//            semanas = semanaDelegate.rutinas[indexPath.row].semanas
+//        }
+//        performSegue(withIdentifier: "weeks_path", sender: self)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "weeks_path" {
+//            if let destinoVC = segue.destination as? MyWeeksViewController {
+//                destinoVC.semanas = self.semanas
+//            }
+//        }
+//    }
+//}
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
