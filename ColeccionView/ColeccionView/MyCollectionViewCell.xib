@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIf-97-2eH">
-                        <rect key="frame" x="0.0" y="10" width="385" height="287"/>
+                        <rect key="frame" x="10" y="10" width="365" height="287"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3T9-Gi-Wk1">
-                                <rect key="frame" x="0.0" y="0.0" width="385" height="287"/>
+                                <rect key="frame" x="0.0" y="0.0" width="365" height="287"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -39,10 +39,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="CIf-97-2eH" secondAttribute="trailing" id="Cqr-ae-PEL"/>
+                <constraint firstAttribute="trailing" secondItem="CIf-97-2eH" secondAttribute="trailing" constant="10" id="Cqr-ae-PEL"/>
                 <constraint firstAttribute="bottom" secondItem="CIf-97-2eH" secondAttribute="bottom" constant="10" id="aN4-tW-fKw"/>
                 <constraint firstItem="CIf-97-2eH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="cYS-SV-cC4"/>
-                <constraint firstItem="CIf-97-2eH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iD1-Ny-fZk"/>
+                <constraint firstItem="CIf-97-2eH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="iD1-Ny-fZk"/>
             </constraints>
             <size key="customSize" width="385" height="307"/>
             <connections>

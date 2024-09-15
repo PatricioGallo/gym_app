@@ -32,7 +32,7 @@ extension myExcViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8 //esto es un ejemplo, cambiar mas adelante
+        return 7 //esto es un ejemplo, cambiar mas adelante
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,11 +73,6 @@ extension myExcViewController: UICollectionViewDataSource{
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myExCell", for: indexPath) as! ExcCollectionViewCell
                         cell.lunes = dias!.viernes
                     return cell
-                case 7:
-                    // Configura la celda para la fila 0
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! infoViewCell
-//                        cell.lunes = dias!.viernes
-                    return cell
                 default:
                     // Configura la celda para cualquier otra sección
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
@@ -91,7 +86,7 @@ extension myExcViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
                 case 0:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
+                    return CGSize(width: myCellWidth, height: myCellWidth/3)
                 case 1:
                     return CGSize(width: myCellWidth, height: myCellWidth)
                 case 2:
@@ -103,8 +98,6 @@ extension myExcViewController: UICollectionViewDelegateFlowLayout {
                 case 5:
                     return CGSize(width: myCellWidth, height: myCellWidth/2)
                 case 6:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
-                case 7:
                     return CGSize(width: myCellWidth, height: myCellWidth/2)
                 default:
                     return CGSize(width: myCellWidth, height: myCellWidth/2)

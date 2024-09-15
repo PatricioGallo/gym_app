@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B015CF0B2C964A3C007ABFE4 /* semanaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */; };
+		B015CF0C2C964A3C007ABFE4 /* semanaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */; };
 		B062436A2C8FDCFF0071E125 /* ExcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06243682C8FDCFF0071E125 /* ExcCollectionViewCell.swift */; };
 		B062436B2C8FDCFF0071E125 /* ExcCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06243692C8FDCFF0071E125 /* ExcCollectionViewCell.xib */; };
 		B06243902C94A91F0071E125 /* headerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062438E2C94A91F0071E125 /* headerCell.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = semanaViewCell.swift; sourceTree = "<group>"; };
+		B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = semanaViewCell.xib; sourceTree = "<group>"; };
 		B06243682C8FDCFF0071E125 /* ExcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcCollectionViewCell.swift; sourceTree = "<group>"; };
 		B06243692C8FDCFF0071E125 /* ExcCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExcCollectionViewCell.xib; sourceTree = "<group>"; };
 		B062438E2C94A91F0071E125 /* headerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerCell.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				B062439B2C94C2ED0071E125 /* infoViewCell.xib */,
 				B062439E2C94DE290071E125 /* rutinaTableViewCell.swift */,
 				B062439F2C94DE290071E125 /* rutinaTableViewCell.xib */,
+				B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */,
+				B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */,
 			);
 			path = ColeccionView;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 				B08C46BB2C87DE5900A940F2 /* LaunchScreen.storyboard in Resources */,
 				B08C46B82C87DE5900A940F2 /* Assets.xcassets in Resources */,
 				B08C46C52C87E36000A940F2 /* MyCollectionViewCell.xib in Resources */,
+				B015CF0C2C964A3C007ABFE4 /* semanaViewCell.xib in Resources */,
 				B08C46B62C87DE5000A940F2 /* Main.storyboard in Resources */,
 				B06243952C94B9E30071E125 /* rutinaViewCell.xib in Resources */,
 			);
@@ -196,6 +203,7 @@
 				B08C46C42C87E36000A940F2 /* MyCollectionViewCell.swift in Sources */,
 				B06243902C94A91F0071E125 /* headerCell.swift in Sources */,
 				B06243A02C94DE2A0071E125 /* rutinaTableViewCell.swift in Sources */,
+				B015CF0B2C964A3C007ABFE4 /* semanaViewCell.swift in Sources */,
 				B06243942C94B9E30071E125 /* rutinaViewCell.swift in Sources */,
 				B08C46D12C88095300A940F2 /* myExcViewController.swift in Sources */,
 				B08C46CE2C8805FE00A940F2 /* MyWeeksViewController.swift in Sources */,
