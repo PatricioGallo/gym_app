@@ -17,9 +17,10 @@ class myExcViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Ejercicios"
         excCollection.dataSource = self
-        excCollection.register(UINib(nibName: "ExcCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myExCell")
+        //Registro todas las views
         excCollection.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
-        excCollection.register(UINib(nibName: "infoViewCell", bundle: nil), forCellWithReuseIdentifier: "infoCell")
+        excCollection.register(UINib(nibName: "ejerciciosViewCell", bundle: nil), forCellWithReuseIdentifier: "exViewCell")
+        
         excCollection.delegate = self
         
     }
@@ -29,7 +30,7 @@ class myExcViewController: UIViewController {
 extension myExcViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2 //esto es un ejemplo, cambiar mas adelante
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -38,12 +39,38 @@ extension myExcViewController: UICollectionViewDataSource{
                 case 0:
                     // Configura la celda para la fila 1
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
-                    cell.myLabel.text = "Header"
+                    cell.myLabel.text = "Info"
+                    cell.secondLabel.text = "Recorda anotar todos los pesos que hiciste en el dia y calificar el ejericio, para un mejor seguimiento."
                     return cell
                 case 1:
                     // Configura la celda para la fila 1
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
-                    cell.myLabel.text = "Info"
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myLabel.text = "Lunes"
+                    cell.ejercicios = dias?.lunes
+                    return cell
+                case 2:
+                    // Configura la celda para la fila 1
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myLabel.text = "Martes"
+                    cell.ejercicios = dias?.martes
+                    return cell
+                case 3:
+                    // Configura la celda para la fila 1
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myLabel.text = "Miercoles"
+                    cell.ejercicios = dias?.miercoles
+                    return cell
+                case 4:
+                    // Configura la celda para la fila 1
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myLabel.text = "Jueves"
+                    cell.ejercicios = dias?.miercoles
+                    return cell
+                case 5:
+                    // Configura la celda para la fila 1
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myLabel.text = "Viernes"
+                    cell.ejercicios = dias?.miercoles
                     return cell
                 default:
                     // Configura la celda para cualquier otra sección
@@ -60,7 +87,15 @@ extension myExcViewController: UICollectionViewDelegateFlowLayout {
                 case 0:
                     return CGSize(width: myCellWidth, height: myCellWidth/3)
                 case 1:
-                    return CGSize(width: myCellWidth, height: myCellWidth)
+                    return CGSize(width: myCellWidth, height: myCellWidth*3/2)
+                case 2:
+                    return CGSize(width: myCellWidth, height: myCellWidth*3/2)
+                case 3:
+                    return CGSize(width: myCellWidth, height: myCellWidth*3/2)
+                case 4:
+                    return CGSize(width: myCellWidth, height: myCellWidth*3/2)
+                case 5:
+                    return CGSize(width: myCellWidth, height: myCellWidth*3/2)
                 default:
                     return CGSize(width: myCellWidth, height: myCellWidth)
                 }

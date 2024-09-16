@@ -6,11 +6,11 @@ struct Ejercicio: Codable {
 }
 
 struct Dias: Codable {
-    let lunes: [Ejercicio]
-    let martes: [Ejercicio]
-    let miercoles: [Ejercicio]
-    let jueves: [Ejercicio]
-    let viernes: [Ejercicio]
+    let lunes: [Ejercicio]?
+    let martes: [Ejercicio]?
+    let miercoles: [Ejercicio]?
+    let jueves: [Ejercicio]?
+    let viernes: [Ejercicio]?
 }
 
 struct Semana: Codable {

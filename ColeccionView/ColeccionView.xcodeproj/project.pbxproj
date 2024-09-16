@@ -30,6 +30,10 @@
 		B08C46C52C87E36000A940F2 /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08C46C32C87E36000A940F2 /* MyCollectionViewCell.xib */; };
 		B08C46CE2C8805FE00A940F2 /* MyWeeksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C46CC2C8805FE00A940F2 /* MyWeeksViewController.swift */; };
 		B08C46D12C88095300A940F2 /* myExcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C46D02C88095300A940F2 /* myExcViewController.swift */; };
+		B08ECFFC2C98AD44002A5B97 /* ejerciciosViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08ECFFA2C98AD44002A5B97 /* ejerciciosViewCell.swift */; };
+		B08ECFFD2C98AD44002A5B97 /* ejerciciosViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08ECFFB2C98AD44002A5B97 /* ejerciciosViewCell.xib */; };
+		B08ED0002C98B3B7002A5B97 /* ejercicioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08ECFFE2C98B3B7002A5B97 /* ejercicioTableViewCell.swift */; };
+		B08ED0012C98B3B7002A5B97 /* ejercicioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08ECFFF2C98B3B7002A5B97 /* ejercicioTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +62,10 @@
 		B08C46C32C87E36000A940F2 /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		B08C46CC2C8805FE00A940F2 /* MyWeeksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWeeksViewController.swift; sourceTree = "<group>"; };
 		B08C46D02C88095300A940F2 /* myExcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myExcViewController.swift; sourceTree = "<group>"; };
+		B08ECFFA2C98AD44002A5B97 /* ejerciciosViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ejerciciosViewCell.swift; sourceTree = "<group>"; };
+		B08ECFFB2C98AD44002A5B97 /* ejerciciosViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ejerciciosViewCell.xib; sourceTree = "<group>"; };
+		B08ECFFE2C98B3B7002A5B97 /* ejercicioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ejercicioTableViewCell.swift; sourceTree = "<group>"; };
+		B08ECFFF2C98B3B7002A5B97 /* ejercicioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ejercicioTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,10 @@
 				B062439F2C94DE290071E125 /* rutinaTableViewCell.xib */,
 				B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */,
 				B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */,
+				B08ECFFA2C98AD44002A5B97 /* ejerciciosViewCell.swift */,
+				B08ECFFB2C98AD44002A5B97 /* ejerciciosViewCell.xib */,
+				B08ECFFE2C98B3B7002A5B97 /* ejercicioTableViewCell.swift */,
+				B08ECFFF2C98B3B7002A5B97 /* ejercicioTableViewCell.xib */,
 			);
 			path = ColeccionView;
 			sourceTree = "<group>";
@@ -184,8 +196,10 @@
 				B08C46B82C87DE5900A940F2 /* Assets.xcassets in Resources */,
 				B08C46C52C87E36000A940F2 /* MyCollectionViewCell.xib in Resources */,
 				B015CF0C2C964A3C007ABFE4 /* semanaViewCell.xib in Resources */,
+				B08ECFFD2C98AD44002A5B97 /* ejerciciosViewCell.xib in Resources */,
 				B08C46B62C87DE5000A940F2 /* Main.storyboard in Resources */,
 				B06243952C94B9E30071E125 /* rutinaViewCell.xib in Resources */,
+				B08ED0012C98B3B7002A5B97 /* ejercicioTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +216,8 @@
 				B062436A2C8FDCFF0071E125 /* ExcCollectionViewCell.swift in Sources */,
 				B08C46C42C87E36000A940F2 /* MyCollectionViewCell.swift in Sources */,
 				B06243902C94A91F0071E125 /* headerCell.swift in Sources */,
+				B08ECFFC2C98AD44002A5B97 /* ejerciciosViewCell.swift in Sources */,
+				B08ED0002C98B3B7002A5B97 /* ejercicioTableViewCell.swift in Sources */,
 				B06243A02C94DE2A0071E125 /* rutinaTableViewCell.swift in Sources */,
 				B015CF0B2C964A3C007ABFE4 /* semanaViewCell.swift in Sources */,
 				B06243942C94B9E30071E125 /* rutinaViewCell.swift in Sources */,
