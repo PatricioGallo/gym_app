@@ -27,12 +27,9 @@ class myExcViewController: UIViewController {
 }
 
 extension myExcViewController: UICollectionViewDataSource{
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7 //esto es un ejemplo, cambiar mas adelante
+        return 2 //esto es un ejemplo, cambiar mas adelante
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,31 +44,6 @@ extension myExcViewController: UICollectionViewDataSource{
                     // Configura la celda para la fila 1
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
                     cell.myLabel.text = "Info"
-                    return cell
-                case 2:
-                    // Configura la celda para la fila 1
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myExCell", for: indexPath) as! ExcCollectionViewCell
-                        cell.lunes = dias!.lunes
-                    return cell
-                case 3:
-                    // Configura la celda para la fila 1
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myExCell", for: indexPath) as! ExcCollectionViewCell
-                        cell.lunes = dias!.martes
-                    return cell
-                case 4:
-                    // Configura la celda para la fila 0
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myExCell", for: indexPath) as! ExcCollectionViewCell
-                        cell.lunes = dias!.miercoles
-                    return cell
-                case 5:
-                    // Configura la celda para la fila 0
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myExCell", for: indexPath) as! ExcCollectionViewCell
-                        cell.lunes = dias!.jueves
-                    return cell
-                case 6:
-                    // Configura la celda para la fila 0
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myExCell", for: indexPath) as! ExcCollectionViewCell
-                        cell.lunes = dias!.viernes
                     return cell
                 default:
                     // Configura la celda para cualquier otra sección
@@ -89,18 +61,8 @@ extension myExcViewController: UICollectionViewDelegateFlowLayout {
                     return CGSize(width: myCellWidth, height: myCellWidth/3)
                 case 1:
                     return CGSize(width: myCellWidth, height: myCellWidth)
-                case 2:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
-                case 3:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
-                case 4:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
-                case 5:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
-                case 6:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
                 default:
-                    return CGSize(width: myCellWidth, height: myCellWidth/2)
+                    return CGSize(width: myCellWidth, height: myCellWidth)
                 }
     }
 }

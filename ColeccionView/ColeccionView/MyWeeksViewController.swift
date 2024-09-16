@@ -53,7 +53,6 @@ extension MyWeeksViewController: UICollectionViewDelegate {
                let dias = sender as? Dias,
                let destinationVC = segue.destination as? myExcViewController {
                 destinationVC.dias = dias
-                print(dias)
             }
         }
 
