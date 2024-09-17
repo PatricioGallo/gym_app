@@ -234,38 +234,38 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
                             "numero": 1,
                             "dias": {
                                 "lunes": [
-                                    {"nombre": "Sentadillas 4x12", "peso": 60},
-                                    {"nombre": "Peso muerto 4x10", "peso": 80},
-                                    {"nombre": "Press banca 4x8", "peso": 70},
-                                    {"nombre": "Remo con mancuernas 4x12", "peso": 40},
+                                    {"nombre": "Sentadillas 4x12", "peso": 0},
+                                    {"nombre": "Peso muerto 4x10", "peso": 0},
+                                    {"nombre": "Press banca 4x8", "peso": 0},
+                                    {"nombre": "Remo con mancuernas 4x12", "peso": 0},
                                     {"nombre": "Dominadas 3x8"}
                                 ],
                                 "martes": [
-                                    {"nombre": "Zancadas 4x12 por pierna", "peso": 20},
-                                    {"nombre": "Curl de bíceps 4x10", "peso": 15},
-                                    {"nombre": "Press militar 4x10", "peso": 30},
+                                    {"nombre": "Zancadas 4x12 por pierna", "peso": 0},
+                                    {"nombre": "Curl de bíceps 4x10", "peso": 0},
+                                    {"nombre": "Press militar 4x10", "peso": 0},
                                     {"nombre": "Plancha 3x1 minuto"},
-                                    {"nombre": "Peso muerto sumo 4x10", "peso": 85}
+                                    {"nombre": "Peso muerto sumo 4x10", "peso": 0}
                                 ],
                                 "miercoles": [
                                     {"nombre": "Sentadillas con salto 4x12"},
-                                    {"nombre": "Press banca inclinado 4x8", "peso": 75},
+                                    {"nombre": "Press banca inclinado 4x8", "peso": 0},
                                     {"nombre": "Dominadas asistidas 3x10"},
                                     {"nombre": "Zancadas con salto 4x10 por pierna"},
-                                    {"nombre": "Curl martillo 4x12", "peso": 20}
+                                    {"nombre": "Curl martillo 4x12", "peso": 0}
                                 ],
                                 "jueves": [
-                                    {"nombre": "Peso muerto rumano 4x10", "peso": 85},
-                                    {"nombre": "Press militar con barra 4x10", "peso": 40},
-                                    {"nombre": "Sentadillas 5x10", "peso": 70},
+                                    {"nombre": "Peso muerto rumano 4x10", "peso": 0},
+                                    {"nombre": "Press militar con barra 4x10", "peso": 0},
+                                    {"nombre": "Sentadillas 5x10", "peso": 0},
                                     {"nombre": "Plancha lateral 3x1 minuto por lado"},
-                                    {"nombre": "Flexiones de triceps 4x12", "peso": 25}
+                                    {"nombre": "Flexiones de triceps 4x12", "peso": 0}
                                 ],
                                 "viernes": [
                                     {"nombre": "Dominadas 4x10"},
-                                    {"nombre": "Press de pecho 4x10", "peso": 65},
-                                    {"nombre": "Remo con barra 4x12", "peso": 60},
-                                    {"nombre": "Peso muerto convencional 4x12", "peso": 90},
+                                    {"nombre": "Press de pecho 4x10", "peso": 0},
+                                    {"nombre": "Remo con barra 4x12", "peso": 0},
+                                    {"nombre": "Peso muerto convencional 4x12", "peso": 0},
                                     {"nombre": "Plancha 4x1 minuto"}
                                 ]
                             }

@@ -42,11 +42,10 @@ class semanaViewCell: UICollectionViewCell {
         myTable.rowHeight = UITableView.automaticDimension
     }
     
-    func porcCalcSemana(semana:Semana) -> Int{
+    func porcCalcSemana(semana:Semana) -> String{
         var ejConPeso = 0;
         var ejTotal = 0;
-        var peso_total = 0;
-        print(semana.numero)
+        var ejNil = 0;
         //Recorro dia lunes si existe
         if let lunes = semana.dias.lunes{
             for dia in lunes{
@@ -56,6 +55,7 @@ class semanaViewCell: UICollectionViewCell {
                     }
                     ejTotal += 1
                 }
+                ejNil += 1
             }
         }
         //Recorro dia martes si existe
@@ -67,6 +67,7 @@ class semanaViewCell: UICollectionViewCell {
                     }
                     ejTotal += 1
                 }
+                ejNil += 1
             }
         }
         //Recorro dia miercoles si existe
@@ -78,6 +79,7 @@ class semanaViewCell: UICollectionViewCell {
                     }
                     ejTotal += 1
                 }
+                ejNil += 1
             }
         }
         //Recorro dia jueves si existe
@@ -89,6 +91,7 @@ class semanaViewCell: UICollectionViewCell {
                     }
                     ejTotal += 1
                 }
+                ejNil += 1
             }
         }
         //Recorro dia viernes si existe
@@ -100,10 +103,15 @@ class semanaViewCell: UICollectionViewCell {
                     }
                     ejTotal += 1
                 }
+                ejNil += 1
             }
         }
 
-        return (ejTotal != 0) ? Int((Double(ejConPeso) / Double(ejTotal)) * 100) : 0
+        if(ejTotal == 0 && ejNil > 0 ){
+            return ""
+        } else{
+            return "\((ejTotal != 0) ? Int((Double(ejConPeso) / Double(ejTotal)) * 100) : 0) %"
+        }
     }//Fin porcCalcRutina
 
 }
@@ -117,7 +125,7 @@ extension semanaViewCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rutCell", for: indexPath) as! rutinaTableViewCell
         if let semana = semanas?[indexPath.row] {
             cell.firstLabel.text = "Semana \(semana.numero)"
-            cell.secondLabel.text = "\(porcCalcSemana(semana: semana))%"
+            cell.secondLabel.text = porcCalcSemana(semana: semana)
         }
         return cell
     }
