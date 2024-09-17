@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="weekTable" id="gTV-IL-0wX" customClass="semanaViewCell" customModule="ColeccionView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXZ-gj-m91">
+                        <rect key="frame" x="0.0" y="10" width="400" height="380"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUR-Ki-hLr">
+                                <rect key="frame" x="20" y="0.0" width="360" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="7qA-Yd-R1D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="vBI-Su-LeI">
+                                <rect key="frame" x="0.0" y="60" width="400" height="320"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vBI-Su-LeI" firstAttribute="leading" secondItem="GXZ-gj-m91" secondAttribute="leading" id="1uM-bX-1Y4"/>
+                            <constraint firstAttribute="bottom" secondItem="vBI-Su-LeI" secondAttribute="bottom" id="9D3-aK-1dK"/>
+                            <constraint firstItem="vBI-Su-LeI" firstAttribute="top" secondItem="fUR-Ki-hLr" secondAttribute="bottom" id="RRI-UX-MKV"/>
+                            <constraint firstAttribute="trailing" secondItem="vBI-Su-LeI" secondAttribute="trailing" id="eBa-yr-yOg"/>
+                            <constraint firstItem="fUR-Ki-hLr" firstAttribute="top" secondItem="GXZ-gj-m91" secondAttribute="top" id="epT-Vi-tIr"/>
+                            <constraint firstAttribute="trailing" secondItem="fUR-Ki-hLr" secondAttribute="trailing" constant="20" id="jjh-pS-yGB"/>
+                            <constraint firstItem="fUR-Ki-hLr" firstAttribute="leading" secondItem="GXZ-gj-m91" secondAttribute="leading" constant="20" id="oZV-D3-lw0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="GXZ-gj-m91" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="LRs-Kv-hsw"/>
+                <constraint firstAttribute="bottom" secondItem="GXZ-gj-m91" secondAttribute="bottom" constant="10" id="tqt-6O-Xsd"/>
+                <constraint firstAttribute="trailing" secondItem="GXZ-gj-m91" secondAttribute="trailing" id="xVS-70-Md9"/>
+                <constraint firstItem="GXZ-gj-m91" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zsB-4b-IHP"/>
+            </constraints>
+            <size key="customSize" width="228" height="276"/>
+            <connections>
+                <outlet property="myLabel" destination="fUR-Ki-hLr" id="cyS-0W-Deq"/>
+                <outlet property="myTable" destination="vBI-Su-LeI" id="hdo-XR-Szr"/>
+                <outlet property="myView" destination="GXZ-gj-m91" id="Lsi-p7-j1e"/>
+            </connections>
+            <point key="canvasLocation" x="260.86956521739131" y="157.36607142857142"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
