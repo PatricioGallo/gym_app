@@ -41,7 +41,7 @@ extension ExcCollectionViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell
-        cell.myLabel.text = "\(dia![indexPath.row].nombre)"
+        cell.myLabel.text = "\(dia![indexPath.row].nombre ?? "" )"
         return cell
     }
 }
