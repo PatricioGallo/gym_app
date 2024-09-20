@@ -3,39 +3,43 @@ import UIKit
 class ViewController: UIViewController,rutinaViewCellDelegate {
     //Variables and oulets
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var persona: Persona?
     var rutinas: [Rutina] = []
     var semanas: [Semana] = []
     var newPerson: Persona? = nil
     let myCellWidth = UIScreen.main.bounds.width
-    var showView: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.startAnimating()
         loadData()
-        if(showView){
-            collectionView.dataSource = self
-            collectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
-            collectionView.register(UINib(nibName: "headerCell", bundle: nil), forCellWithReuseIdentifier: "hcell")
-            collectionView.register(UINib(nibName: "infoViewCell", bundle: nil), forCellWithReuseIdentifier: "infoCell")
-            collectionView.register(UINib(nibName: "rutinaViewCell", bundle: nil), forCellWithReuseIdentifier: "rutinaCell")
-            collectionView.delegate = self
-        }
         self.title = "Rutinas"
     }
     
     private func loadData(){
         
         netWorkingProvider.shared.getUser(id: 1) { (user) in
-            self.newPerson = user
-            self.collectionView.reloadData()
-        } failure: { (error) in
-            print("\(error.debugDescription) with \(String(describing: self.newPerson))")
-            self.showView = false
-        }
-        
-    }
-}
+            DispatchQueue.main.async {
+                 self.activityIndicator.stopAnimating()
+                 self.newPerson = user
+                 self.collectionView.dataSource = self
+                 self.collectionView.delegate = self
+                 self.collectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
+                 self.collectionView.register(UINib(nibName: "headerCell", bundle: nil), forCellWithReuseIdentifier: "hcell")
+                 self.collectionView.register(UINib(nibName: "infoViewCell", bundle: nil), forCellWithReuseIdentifier: "infoCell")
+                 self.collectionView.register(UINib(nibName: "rutinaViewCell", bundle: nil), forCellWithReuseIdentifier: "rutinaCell")
+                 self.collectionView.reloadData()
+                }
+            } failure: { (error) in
+                DispatchQueue.main.async {
+                    self.activityIndicator.startAnimating()
+                    print("\(error.debugDescription) with \(String(describing: self.newPerson))")
+                 }
+            }
+    } //loadData
+} //ViewController
 
 extension ViewController: UICollectionViewDataSource {
 
