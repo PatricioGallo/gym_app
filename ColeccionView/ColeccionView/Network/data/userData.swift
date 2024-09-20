@@ -6,29 +6,6 @@
 //
 
 import Foundation
-//
-//struct User: Decodable{
-//    let name: String?
-//    let mail: String?
-//    let age: String? // Cambiado a String para coincidir con el JSON
-//    let weight: String? // Cambiado a String para coincidir con el JSON
-//    let id: String? // Cambiado a String para coincidir con el JSON
-//
-//    enum CodingKeys: String, CodingKey {
-//            case age
-//            case id
-//            case mail = "mail" // Cambia aquí si el nombre en el JSON es diferente
-//            case name
-//            case weight
-//        }
-//}
-//
-//struct newUser: Encodable{
-//    let name: String?
-//    let mail: String?
-//    let age: String? // Cambiado a String para coincidir con el JSON
-//    let weight: String? // Cambiado a String para coincidir con el JSON
-//}
 
 struct Ejercicio: Decodable {
     let nombre: String?
@@ -54,7 +31,7 @@ struct Rutina: Decodable {
 }
 
 struct Persona: Decodable {
-    let id: String
+    let id: String //TODO changes in anothers APIS
     let nombre: String
     let apellido: String
     let edad: Int

@@ -1,7 +1,7 @@
 import UIKit
 
 class ViewController: UIViewController,rutinaViewCellDelegate {
-//    class ViewController: UIViewController {
+    //Variables and oulets
     @IBOutlet weak var collectionView: UICollectionView!
     var persona: Persona?
     var rutinas: [Rutina] = []
@@ -12,7 +12,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData() //carga a la variable persona
+        loadData()
         if(showView){
             collectionView.dataSource = self
             collectionView.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
@@ -28,7 +28,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
         
         netWorkingProvider.shared.getUser(id: 1) { (user) in
             self.newPerson = user
-            self.collectionView.reloadData() // Recargar la colección
+            self.collectionView.reloadData()
         } failure: { (error) in
             print("\(error.debugDescription) with \(String(describing: self.newPerson))")
             self.showView = false
@@ -48,7 +48,6 @@ extension ViewController: UICollectionViewDataSource {
         switch (indexPath.row){
         case 0:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hcell", for: indexPath) as! headerCell
-            // Desempaquetar de forma segura
             if let person = newPerson {
                 cell.myLabel.text = "\(person.nombre) \(person.apellido)"
             } else {
@@ -74,7 +73,6 @@ extension ViewController: UICollectionViewDataSource {
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hcell", for: indexPath) as! headerCell
-            // Desempaquetar de forma segura
             if let person = newPerson {
                 cell.myLabel.text = "\(person.nombre) \(person.apellido)"
             } else {
@@ -88,7 +86,6 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
     func didSelectRutina(semanas: [Semana]) {
-        // Maneja la lógica para realizar el segue o la navegación
         performSegue(withIdentifier: "weeks_path", sender: semanas)
     }
 
@@ -103,16 +100,14 @@ extension ViewController: UICollectionViewDelegate {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        if(indexPath.row == 0){
+        switch(indexPath.row ){
+        case 0:
             return CGSize(width: myCellWidth, height: myCellWidth/4)
-        }
-        else if (indexPath.row == 1){
+        case 1:
             return CGSize(width: myCellWidth, height: myCellWidth/2)
-        }else if (indexPath.row == 2){
+        case 2:
             return CGSize(width: myCellWidth, height: myCellWidth)
-        }
-        else{
+        default:
             return CGSize(width: myCellWidth, height: myCellWidth/2)
         }
     }
