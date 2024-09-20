@@ -9,6 +9,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
     var semanas: [Semana] = []
     var newPerson: Persona? = nil
     let myCellWidth = UIScreen.main.bounds.width
+    let user_id = 1;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
     
     private func loadData(){
         
-        netWorkingProvider.shared.getUser(id: 1) { (user) in
+        netWorkingProvider.shared.getUser(id: user_id) { (user) in
             DispatchQueue.main.async {
                  self.activityIndicator.stopAnimating()
                  self.newPerson = user

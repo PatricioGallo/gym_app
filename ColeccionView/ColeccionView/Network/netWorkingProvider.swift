@@ -54,9 +54,7 @@ final class netWorkingProvider{
             } else if let user = response.value {
                 success(user)
             }
-
         }
     }
-    
 }
 
