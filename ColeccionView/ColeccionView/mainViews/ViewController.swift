@@ -15,7 +15,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.startAnimating()
         loadData()
-        self.title = "Rutinas"
+        self.title = "Inicio"
     }
     
     private func loadData(){
