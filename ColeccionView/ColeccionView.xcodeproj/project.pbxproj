@@ -36,6 +36,7 @@
 		B0E270CA2C9CAC3E00FE0A95 /* netWorkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E270C92C9CAC3E00FE0A95 /* netWorkingProvider.swift */; };
 		B0E270CD2C9CACA100FE0A95 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B0E270CC2C9CACA100FE0A95 /* Alamofire */; };
 		B0E270CF2C9CACC000FE0A95 /* userData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E270CE2C9CACC000FE0A95 /* userData.swift */; };
+		B0F80C442C9DF5D700E8F419 /* user_send_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80C432C9DF5D700E8F419 /* user_send_data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		B08ECFFF2C98B3B7002A5B97 /* ejercicioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ejercicioTableViewCell.xib; sourceTree = "<group>"; };
 		B0E270C92C9CAC3E00FE0A95 /* netWorkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netWorkingProvider.swift; sourceTree = "<group>"; };
 		B0E270CE2C9CACC000FE0A95 /* userData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userData.swift; sourceTree = "<group>"; };
+		B0F80C432C9DF5D700E8F419 /* user_send_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user_send_data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				B0E270CE2C9CACC000FE0A95 /* userData.swift */,
+				B0F80C432C9DF5D700E8F419 /* user_send_data.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				B08C46AF2C87DE5000A940F2 /* AppDelegate.swift in Sources */,
 				B062439C2C94C2ED0071E125 /* infoViewCell.swift in Sources */,
 				B062436A2C8FDCFF0071E125 /* ExcCollectionViewCell.swift in Sources */,
+				B0F80C442C9DF5D700E8F419 /* user_send_data.swift in Sources */,
 				B08C46C42C87E36000A940F2 /* MyCollectionViewCell.swift in Sources */,
 				B06243902C94A91F0071E125 /* headerCell.swift in Sources */,
 				B0E270CA2C9CAC3E00FE0A95 /* netWorkingProvider.swift in Sources */,

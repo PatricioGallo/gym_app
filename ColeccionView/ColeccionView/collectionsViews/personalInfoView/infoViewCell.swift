@@ -1,14 +1,7 @@
-//
-//  infoViewCell.swift
-//  ColeccionView
-//
-//  Created by Pato Gallo on 13/09/2024.
-//
-
 import UIKit
 
 class infoViewCell: UICollectionViewCell {
-
+    //Outlets and variables
     @IBOutlet weak var labelMid: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var myView: UIView!
@@ -27,7 +20,6 @@ class infoViewCell: UICollectionViewCell {
         // Hacer las esquinas redondeadas
         myView.layer.cornerRadius = 10
         myView.layer.masksToBounds = false
-
     }
-
 }
+
