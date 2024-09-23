@@ -8,33 +8,33 @@
 import Foundation
 
 struct Ejercicio: Decodable {
-    let nombre: String?
-    let peso: Int?
+    var nombre: String?
+    var peso: Int?
 }
 
 struct Dias: Decodable {
-    let nombre: String
-    let ejercicios: [Ejercicio]
+    var nombre: String
+    var ejercicios: [Ejercicio]
 }
 
 struct Semana: Decodable {
-    let numero: Int
-    let dias: [Dias]
+    var numero: Int
+    var dias: [Dias]
 }
 
 struct Rutina: Decodable {
-    let nombre: String
-    let semanas: [Semana]
+    var nombre: String
+    var semanas: [Semana]
 }
 
 struct Persona: Decodable {
-    let id: String //TODO changes in anothers APIS
-    let nombre: String
-    let apellido: String
-    let edad: Int
-    let mail: String
-    let contrasena: String
-    let rutinas: [Rutina]
+    var id: String //TODO changes in anothers APIS
+    var nombre: String
+    var apellido: String
+    var edad: Int
+    var mail: String
+    var contrasena: String
+    var rutinas: [Rutina]
 }
 
 
