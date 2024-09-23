@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B015CF0B2C964A3C007ABFE4 /* semanaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */; };
 		B015CF0C2C964A3C007ABFE4 /* semanaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */; };
+		B01D23E82CA1A9CE002DB76C /* editExcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D23E72CA1A9CE002DB76C /* editExcViewController.swift */; };
 		B062436A2C8FDCFF0071E125 /* ExcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06243682C8FDCFF0071E125 /* ExcCollectionViewCell.swift */; };
 		B062436B2C8FDCFF0071E125 /* ExcCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06243692C8FDCFF0071E125 /* ExcCollectionViewCell.xib */; };
 		B06243902C94A91F0071E125 /* headerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062438E2C94A91F0071E125 /* headerCell.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = semanaViewCell.swift; sourceTree = "<group>"; };
 		B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = semanaViewCell.xib; sourceTree = "<group>"; };
+		B01D23E72CA1A9CE002DB76C /* editExcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editExcViewController.swift; sourceTree = "<group>"; };
 		B06243682C8FDCFF0071E125 /* ExcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcCollectionViewCell.swift; sourceTree = "<group>"; };
 		B06243692C8FDCFF0071E125 /* ExcCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExcCollectionViewCell.xib; sourceTree = "<group>"; };
 		B062438E2C94A91F0071E125 /* headerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerCell.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				B08C46B22C87DE5000A940F2 /* ViewController.swift */,
 				B08C46CC2C8805FE00A940F2 /* MyWeeksViewController.swift */,
 				B08C46D02C88095300A940F2 /* myExcViewController.swift */,
+				B01D23E72CA1A9CE002DB76C /* editExcViewController.swift */,
 			);
 			path = mainViews;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				B015CF0B2C964A3C007ABFE4 /* semanaViewCell.swift in Sources */,
 				B06243942C94B9E30071E125 /* rutinaViewCell.swift in Sources */,
 				B08C46D12C88095300A940F2 /* myExcViewController.swift in Sources */,
+				B01D23E82CA1A9CE002DB76C /* editExcViewController.swift in Sources */,
 				B08C46CE2C8805FE00A940F2 /* MyWeeksViewController.swift in Sources */,
 				B08C46B12C87DE5000A940F2 /* SceneDelegate.swift in Sources */,
 			);

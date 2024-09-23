@@ -7,7 +7,7 @@
 
 import UIKit
 
-class myExcViewController: UIViewController {
+class myExcViewController: UIViewController, excViewCellDelegate {
     //OUTLETS AND VIEWS
     var dias: Dias?
     var ejercicio: [Ejercicio]?
@@ -42,6 +42,7 @@ extension myExcViewController: UICollectionViewDataSource{
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
                     cell.myLabel.text = "Lunes"
                     cell.ejercicios = dias?.lunes
+                    cell.delegate = self
                     return cell
 //                case 2:
 //                    // Configura la celda para la fila 3
@@ -77,6 +78,22 @@ extension myExcViewController: UICollectionViewDataSource{
 }
 
 //DELEGATE
+extension myExcViewController: UICollectionViewDelegate {
+    func didSelectExc(ejercicio: Ejercicio) {
+            performSegue(withIdentifier: "editExcPath", sender: ejercicio)
+        }
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "editExcPath",
+               let ejercicio = sender as? Ejercicio,
+               let destinationVC = segue.destination as? editExcViewController {
+                destinationVC.ejercicio = ejercicio
+                destinationVC.modalPresentationStyle = .pageSheet 
+            }
+        }
+}
+
+
+//DELEGATE LAYOUT
 extension myExcViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {
