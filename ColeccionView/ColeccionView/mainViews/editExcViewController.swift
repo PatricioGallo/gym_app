@@ -21,6 +21,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
         placeHolderConfig(peso: ejercicio?.peso)
         textInput.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         textInput.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        textInput.textAlignment = .center
         
         // Asignar el delegate
         textInput.delegate = self
@@ -67,14 +68,15 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func captureInputValue() {
-        if let text = textInput.text, !text.isEmpty {
-            print("Valor ingresado: \(text)")
-            let persona_modificada = Persona_mod(nombre: text, apellido: nil, edad: 23, mail: nil, contrasena: nil, rutinas: nil)
+        if let text = textInput.text, !text.isEmpty, let peso = Int(text) {
+            print("Valor ingresado: \(peso)")
+            let persona_modificada = Persona_mod(nombre: "Patricio", apellido: nil, edad: peso, mail: nil, contrasena: nil, rutinas: nil)
             
             netWorkingProvider.shared.editInfo(id: 1, user: persona_modificada,
                         success: { updatedUser in
                             // Manejar el éxito, actualizar el estado si es necesario
                             print("Usuario actualizado")
+                            print("\n\n\n\n\n\n\n\n\n\n\n \(generateData.newPerson) \n\n\n\n\n\n\n\n")
                         },
                         failure: { error in
                             // Manejar el error
@@ -83,7 +85,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
             
             dismissModal() // Cierra el modal
         } else {
-            print("El campo está vacío.")
+            print("El campo está vacío o no es un número válido.")
             dismissModal() // Cierra el modal
         }
     }
@@ -92,12 +94,18 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        // Ajustar el tamaño de la vista
-//        let height = self.view.bounds.height / 2
-//        self.view.frame = CGRect(x: 0, y: self.view.bounds.height - height, width: self.view.bounds.width, height: height)
-//    } // TODO VER
-    
+    // Validación de entrada en el UITextField
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Permitir borrar
+        if string.isEmpty {
+            return true
+        }
+
+        // Verificar que la nueva cadena solo contenga dígitos
+        let allowedCharacterSet = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        
+        return allowedCharacterSet.isSuperset(of: characterSet)
+    }
 }
 

@@ -9,7 +9,7 @@ import UIKit
 
 class myExcViewController: UIViewController, excViewCellDelegate {
     //OUTLETS AND VIEWS
-    var dias: Dias?
+    var dias: [Dias]?
     var ejercicio: [Ejercicio]?
     let myCellWidth = UIScreen.main.bounds.width
     @IBOutlet weak var excCollection: UICollectionView!
@@ -27,7 +27,7 @@ class myExcViewController: UIViewController, excViewCellDelegate {
 //DATASOURCE
 extension myExcViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return dias!.count+1
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
@@ -37,46 +37,46 @@ extension myExcViewController: UICollectionViewDataSource{
                     cell.myLabel.text = "Info"
                     cell.secondLabel.text = "Recorda anotar todos los pesos que hiciste en el dia y calificar el ejericio, para un mejor seguimiento."
                     return cell
-                case 1:
+                case 1 ... dias!.count+1:
                     // Configura la celda para la fila 2
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
                     cell.myTable.reloadData()
-                    cell.myLabel.text = "Lunes"
-                    cell.ejercicios = dias?.lunes
+                    cell.myLabel.text = dias?[indexPath.row - 1].nombre
+                    cell.ejercicios = dias?[indexPath.row - 1].ejercicios
                     cell.delegate = self
                     return cell
-                case 2:
-                    // Configura la celda para la fila 3
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myTable.reloadData()
-                    cell.myLabel.text = "Martes"
-                    cell.ejercicios = dias?.martes
-                    cell.delegate = self
-                    return cell
-                case 3:
-                    // Configura la celda para la fila 4
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myTable.reloadData()
-                    cell.myLabel.text = "Miercoles"
-                    cell.ejercicios = dias?.miercoles
-                    cell.delegate = self
-                    return cell
-                case 4:
-                    // Configura la celda para la fila 5
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myTable.reloadData()
-                    cell.myLabel.text = "Jueves"
-                    cell.ejercicios = dias?.jueves
-                    cell.delegate = self
-                    return cell
-                case 5:
-                    // Configura la celda para la fila 6
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myTable.reloadData()
-                    cell.myLabel.text = "Viernes"
-                    cell.ejercicios = dias?.viernes
-                    cell.delegate = self
-                    return cell
+//                case 2:
+//                    // Configura la celda para la fila 3
+//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+//                    cell.myTable.reloadData()
+//                    cell.myLabel.text = "Martes"
+//                    cell.ejercicios = dias?[indexPath.row - 1].ejercicios
+//                    cell.delegate = self
+//                    return cell
+//                case 3:
+//                    // Configura la celda para la fila 4
+//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+//                    cell.myTable.reloadData()
+//                    cell.myLabel.text = "Miercoles"
+//                    cell.ejercicios = dias?.miercoles
+//                    cell.delegate = self
+//                    return cell
+//                case 4:
+//                    // Configura la celda para la fila 5
+//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+//                    cell.myTable.reloadData()
+//                    cell.myLabel.text = "Jueves"
+//                    cell.ejercicios = dias?.jueves
+//                    cell.delegate = self
+//                    return cell
+//                case 5:
+//                    // Configura la celda para la fila 6
+//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+//                    cell.myTable.reloadData()
+//                    cell.myLabel.text = "Viernes"
+//                    cell.ejercicios = dias?.viernes
+//                    cell.delegate = self
+//                    return cell
                 default:
                     // Configura la celda para cualquier otra sección
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell

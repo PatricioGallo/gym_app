@@ -13,7 +13,7 @@ class MyWeeksViewController: UIViewController, semanaViewCellDelegate {
     let myCellWidth = UIScreen.main.bounds.width
     var semanas: [Semana]?
     var ejercicios:[Ejercicio]?
-    var dias: Dias?
+    var dias: [Dias]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +42,12 @@ extension MyWeeksViewController: UICollectionViewDataSource{
 
 //DELEGATE
 extension MyWeeksViewController: UICollectionViewDelegate {
-        func didSelectSemana(dias: Dias) {
+    func didSelectSemana(dias: [Dias]) {
             performSegue(withIdentifier: "ex_path", sender: dias)
         }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "ex_path",
-               let dias = sender as? Dias,
+               let dias = sender as? [Dias],
                let destinationVC = segue.destination as? myExcViewController {
                 destinationVC.dias = dias
             }

@@ -8,7 +8,7 @@
 import UIKit
 
 protocol semanaViewCellDelegate: AnyObject {
-    func didSelectSemana(dias: Dias)
+    func didSelectSemana(dias: [Dias])
 }
 
 
@@ -17,7 +17,7 @@ class semanaViewCell: UICollectionViewCell {
     @IBOutlet weak var myTable: UITableView!
     @IBOutlet weak var myView: UIView!
     var semanas:[Semana]?
-    var dias: Dias?
+    var dias: [Dias]?
     weak var delegate: semanaViewCellDelegate?
     
     override func awakeFromNib() {
@@ -46,67 +46,21 @@ class semanaViewCell: UICollectionViewCell {
         var ejConPeso = 0;
         var ejTotal = 0;
         var ejNil = 0;
-        //Recorro dia lunes si existe
-        if let lunes = semana.dias.lunes{
-            for dia in lunes{
-                if let peso = dia.peso {
-                    if (peso != 0){
-                        ejConPeso += 1
-                    }
-                    ejTotal += 1
-                }
-                ejNil += 1
-            }
-        }
-        //Recorro dia martes si existe
-        if let martes = semana.dias.martes{
-            for dia in martes{
-                if let peso = dia.peso {
-                    if (peso != 0){
-                        ejConPeso += 1
-                    }
-                    ejTotal += 1
-                }
-                ejNil += 1
-            }
-        }
-        //Recorro dia miercoles si existe
-        if let miercoles = semana.dias.miercoles{
-            for dia in miercoles{
-                if let peso = dia.peso {
-                    if (peso != 0){
-                        ejConPeso += 1
-                    }
-                    ejTotal += 1
-                }
-                ejNil += 1
-            }
-        }
-        //Recorro dia jueves si existe
-        if let jueves = semana.dias.jueves{
-            for dia in jueves{
-                if let peso = dia.peso {
-                    if (peso != 0){
-                        ejConPeso += 1
-                    }
-                    ejTotal += 1
-                }
-                ejNil += 1
-            }
-        }
-        //Recorro dia viernes si existe
-        if let viernes = semana.dias.viernes{
-            for dia in viernes{
-                if let peso = dia.peso {
-                    if (peso != 0){
-                        ejConPeso += 1
-                    }
-                    ejTotal += 1
-                }
-                ejNil += 1
-            }
-        }
 
+        //recorro por dia
+        for dia in semana.dias{
+            //recorro por ejercicio
+            for ejercicio in dia.ejercicios {
+                if let peso = ejercicio.peso {
+                    if (peso != 0){
+                        ejConPeso += 1
+                    }
+                    ejTotal += 1
+                }
+                ejNil += 1
+            }
+        }
+    
         if(ejTotal == 0 && ejNil > 0 ){
             return ""
         } else{

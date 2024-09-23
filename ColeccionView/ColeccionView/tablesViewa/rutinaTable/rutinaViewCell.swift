@@ -44,9 +44,10 @@ class rutinaViewCell: UICollectionViewCell {
         var ejNil = 0;
         //Recorro las semanas
         for semana in rutina.semanas {
-            //Recorro dia lunes si existe
-            if let lunes = semana.dias.lunes{
-                for ejercicio in lunes{
+            //recorro por dia
+            for dia in semana.dias{
+                //recorro por ejercicio
+                for ejercicio in dia.ejercicios {
                     if let peso = ejercicio.peso {
                         if (peso != 0){
                             ejConPeso += 1
@@ -56,61 +57,12 @@ class rutinaViewCell: UICollectionViewCell {
                     ejNil += 1
                 }
             }
-            //Recorro dia martes si existe
-            if let martes = semana.dias.martes{
-                for ejercicio in martes{
-                    if let peso = ejercicio.peso {
-                        if (peso != 0){
-                            ejConPeso += 1
-                        }
-                        ejTotal += 1
-                    }
-                    ejNil += 1
-                }
-            }
-            //Recorro dia miercoles si existe
-            if let miercoles = semana.dias.miercoles{
-                for ejercicio in miercoles{
-                    if let peso = ejercicio.peso {
-                        if (peso != 0){
-                            ejConPeso += 1
-                        }
-                        ejTotal += 1
-                    }
-                    ejNil += 1
-                }
-            }
-            //Recorro dia jueves si existe
-            if let jueves = semana.dias.jueves{
-                for ejercicio in jueves{
-                    if let peso = ejercicio.peso {
-                        if (peso != 0){
-                            ejConPeso += 1
-                        }
-                        ejTotal += 1
-                    }
-                    ejNil += 1
-                }
-            }
-            //Recorro dia viernes si existe
-            if let viernes = semana.dias.viernes{
-                for ejercicio in viernes{
-                    if let peso = ejercicio.peso {
-                        if (peso != 0){
-                            ejConPeso += 1
-                        }
-                        ejTotal += 1
-                    }
-                    ejNil += 1
-                }
-            }
-
         }
         
         if(ejTotal == 0 && ejNil > 0 ){
             return ""
         } else{
-            return "\((ejTotal != 0) ? Int((Double(ejConPeso) / Double(ejTotal)) * 100) : 0) %"
+            return "\((ejTotal != 0) ? Int(ejConPeso / ejTotal * 100) : 0) %"
         }
         
     }//Fin porcCalcRutina
@@ -125,7 +77,6 @@ extension rutinaViewCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rutCell", for: indexPath) as! rutinaTableViewCell
         if let rutina = rutinas?[indexPath.row] {
             cell.firstLabel.text = rutina.nombre
-            //cell.secondLabel.text = "\(porcCalcRutina(rutina: rutina))%"
             cell.secondLabel.text = porcCalcRutina(rutina: rutina)
         }
         return cell

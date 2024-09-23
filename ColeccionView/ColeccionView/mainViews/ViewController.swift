@@ -9,7 +9,6 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
     var semanas: [Semana] = []
     var newPerson: Persona? = nil
     let myCellWidth = UIScreen.main.bounds.width
-    let user_id = 1;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +20,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
     
     private func loadData(){
         
-        netWorkingProvider.shared.getUser(id: user_id) { (user) in
+        netWorkingProvider.shared.getUser(id: generateData.userID) { (user) in
             DispatchQueue.main.async {
                  self.activityIndicator.stopAnimating()
                  self.newPerson = user
@@ -32,6 +31,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
                  self.collectionView.register(UINib(nibName: "infoViewCell", bundle: nil), forCellWithReuseIdentifier: "infoCell")
                  self.collectionView.register(UINib(nibName: "rutinaViewCell", bundle: nil), forCellWithReuseIdentifier: "rutinaCell")
                  self.collectionView.reloadData()
+                generateData.newPerson = user
                 }
             } failure: { (error) in
                 DispatchQueue.main.async {

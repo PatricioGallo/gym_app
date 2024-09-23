@@ -13,16 +13,13 @@ struct Ejercicio: Decodable {
 }
 
 struct Dias: Decodable {
-    let lunes: [Ejercicio]?
-    let martes: [Ejercicio]?
-    let miercoles: [Ejercicio]?
-    let jueves: [Ejercicio]?
-    let viernes: [Ejercicio]?
+    let nombre: String
+    let ejercicios: [Ejercicio]
 }
 
 struct Semana: Decodable {
     let numero: Int
-    let dias: Dias
+    let dias: [Dias]
 }
 
 struct Rutina: Decodable {
