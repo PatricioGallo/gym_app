@@ -69,6 +69,18 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     private func captureInputValue() {
         if let text = textInput.text, !text.isEmpty {
             print("Valor ingresado: \(text)")
+            let persona_modificada = Persona_mod(nombre: text, apellido: nil, edad: 23, mail: nil, contrasena: nil, rutinas: nil)
+            
+            netWorkingProvider.shared.editInfo(id: 1, user: persona_modificada,
+                        success: { updatedUser in
+                            // Manejar el éxito, actualizar el estado si es necesario
+                            print("Usuario actualizado")
+                        },
+                        failure: { error in
+                            // Manejar el error
+                            print("Error al actualizar el usuario: \(error?.localizedDescription ?? "Desconocido")")
+                        })
+            
             dismissModal() // Cierra el modal
         } else {
             print("El campo está vacío.")
@@ -85,6 +97,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
 //        // Ajustar el tamaño de la vista
 //        let height = self.view.bounds.height / 2
 //        self.view.frame = CGRect(x: 0, y: self.view.bounds.height - height, width: self.view.bounds.width, height: height)
-//    }
+//    } // TODO VER
+    
 }
 

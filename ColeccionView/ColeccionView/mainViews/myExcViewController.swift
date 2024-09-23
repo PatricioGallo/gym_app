@@ -27,7 +27,7 @@ class myExcViewController: UIViewController, excViewCellDelegate {
 //DATASOURCE
 extension myExcViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 6
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
@@ -40,34 +40,43 @@ extension myExcViewController: UICollectionViewDataSource{
                 case 1:
                     // Configura la celda para la fila 2
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myTable.reloadData()
                     cell.myLabel.text = "Lunes"
                     cell.ejercicios = dias?.lunes
                     cell.delegate = self
                     return cell
-//                case 2:
-//                    // Configura la celda para la fila 3
-//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-//                    cell.myLabel.text = "Martes"
-//                    cell.ejercicios = dias?.martes
-//                    return cell
-//                case 3:
-//                    // Configura la celda para la fila 4
-//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-//                    cell.myLabel.text = "Miercoles"
-//                    cell.ejercicios = dias?.miercoles
-//                    return cell
-//                case 4:
-//                    // Configura la celda para la fila 5
-//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-//                    cell.myLabel.text = "Jueves"
-//                    cell.ejercicios = dias?.jueves
-//                    return cell
-//                case 5:
-//                    // Configura la celda para la fila 6
-//                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-//                    cell.myLabel.text = "Viernes"
-//                    cell.ejercicios = dias?.viernes
-//                    return cell
+                case 2:
+                    // Configura la celda para la fila 3
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myTable.reloadData()
+                    cell.myLabel.text = "Martes"
+                    cell.ejercicios = dias?.martes
+                    cell.delegate = self
+                    return cell
+                case 3:
+                    // Configura la celda para la fila 4
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myTable.reloadData()
+                    cell.myLabel.text = "Miercoles"
+                    cell.ejercicios = dias?.miercoles
+                    cell.delegate = self
+                    return cell
+                case 4:
+                    // Configura la celda para la fila 5
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myTable.reloadData()
+                    cell.myLabel.text = "Jueves"
+                    cell.ejercicios = dias?.jueves
+                    cell.delegate = self
+                    return cell
+                case 5:
+                    // Configura la celda para la fila 6
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
+                    cell.myTable.reloadData()
+                    cell.myLabel.text = "Viernes"
+                    cell.ejercicios = dias?.viernes
+                    cell.delegate = self
+                    return cell
                 default:
                     // Configura la celda para cualquier otra sección
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as! MyCollectionViewCell

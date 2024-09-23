@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIf-97-2eH">
-                        <rect key="frame" x="0.0" y="10" width="400" height="130"/>
+                        <rect key="frame" x="10" y="10" width="380" height="130"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eYz-zE-fKO">
                                 <rect key="frame" x="20" y="22" width="80" height="75"/>
@@ -29,7 +30,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7tO-bv-qIA">
-                                <rect key="frame" x="110" y="20" width="280" height="20"/>
+                                <rect key="frame" x="110" y="20" width="260" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="bff-Yk-gEB"/>
                                 </constraints>
@@ -38,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZZ-5B-wAN">
-                                <rect key="frame" x="110" y="40" width="280" height="70"/>
+                                <rect key="frame" x="110" y="40" width="260" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="ZYa-D4-AvV"/>
                                 </constraints>
@@ -66,10 +67,10 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="CIf-97-2eH" secondAttribute="trailing" id="Cqr-ae-PEL"/>
+                <constraint firstAttribute="trailing" secondItem="CIf-97-2eH" secondAttribute="trailing" constant="10" id="Cqr-ae-PEL"/>
                 <constraint firstAttribute="bottom" secondItem="CIf-97-2eH" secondAttribute="bottom" constant="10" id="aN4-tW-fKw"/>
                 <constraint firstItem="CIf-97-2eH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="cYS-SV-cC4"/>
-                <constraint firstItem="CIf-97-2eH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iD1-Ny-fZk"/>
+                <constraint firstItem="CIf-97-2eH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="iD1-Ny-fZk"/>
             </constraints>
             <size key="customSize" width="385" height="307"/>
             <connections>
