@@ -5,6 +5,10 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var myImage: UIImageView!
     var ejercicio: Ejercicio?
+    var rutinaIndex:Int?
+    var semanaIndex:Int?
+    var diaIndex: Int?
+    var ejercicioIndex: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,13 +74,13 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     private func captureInputValue() {
         if let text = textInput.text, !text.isEmpty, let peso = Int(text) {
             print("Valor ingresado: \(peso)")
-            let persona_modificada = Persona_mod(nombre: "Patricio", apellido: nil, edad: peso, mail: nil, contrasena: nil, rutinas: nil)
-            
+            let persona_modificada = Persona_mod(nombre: "Patricio", apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: nil)
+                
             netWorkingProvider.shared.editInfo(id: 1, user: persona_modificada,
                         success: { updatedUser in
                             // Manejar el éxito, actualizar el estado si es necesario
-                            print("Usuario actualizado")
-                            print("\n\n\n\n\n\n\n\n\n\n\n \(generateData.newPerson) \n\n\n\n\n\n\n\n")
+                            generateData.modificarPesoEnEjercicio(rutinaIndex: 0, semanaIndex: 0, diaIndex: 0, ejercicioIndex: 0, nuevoPeso: peso)
+                            print("\n\n\n \(generateData.newPerson) \n\n\n")
                         },
                         failure: { error in
                             // Manejar el error

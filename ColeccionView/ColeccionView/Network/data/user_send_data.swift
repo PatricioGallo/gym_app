@@ -4,16 +4,13 @@ struct Ejercicio_mod: Codable {  // Conforma a Encodable y Decodable
 }
 
 struct Dias_mod: Codable {
-    let lunes: [Ejercicio_mod]?
-    let martes: [Ejercicio_mod]?
-    let miercoles: [Ejercicio_mod]?
-    let jueves: [Ejercicio_mod]?
-    let viernes: [Ejercicio_mod]?
+    var nombre: String
+    var ejercicios: [Ejercicio_mod]
 }
 
 struct Semana_mod: Codable {
-    let numero: Int?
-    let dias: Dias_mod?
+    var numero: Int
+    var dias: [Dias_mod]
 }
 
 struct Rutina_mod: Codable {
