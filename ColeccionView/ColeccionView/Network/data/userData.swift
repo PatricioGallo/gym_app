@@ -7,27 +7,27 @@
 
 import Foundation
 
-struct Ejercicio: Decodable {
+struct Ejercicio: Codable {
     var nombre: String?
     var peso: Int?
 }
 
-struct Dias: Decodable {
+struct Dias: Codable {
     var nombre: String
     var ejercicios: [Ejercicio]
 }
 
-struct Semana: Decodable {
+struct Semana: Codable {
     var numero: Int
     var dias: [Dias]
 }
 
-struct Rutina: Decodable {
+struct Rutina: Codable {
     var nombre: String
     var semanas: [Semana]
 }
 
-struct Persona: Decodable {
+struct Persona: Codable {
     var id: String //TODO changes in anothers APIS
     var nombre: String
     var apellido: String

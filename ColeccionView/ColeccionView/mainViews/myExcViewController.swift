@@ -7,7 +7,7 @@
 
 import UIKit
 //
-class myExcViewController: UIViewController, excViewCellDelegate {
+class myExcViewController: UIViewController, excViewCellDelegate, editExcDelegate{
     //OUTLETS AND VIEWS
     var dias: [Dias]?
     var ejercicio: [Ejercicio]?
@@ -75,17 +75,22 @@ extension myExcViewController: UICollectionViewDelegate {
     func didSelectExc(path: Int, diasPath: Int) {
             performSegue(withIdentifier: "editExcPath", sender: (path, diasPath))
         }
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "editExcPath",
-               let (path, diasPath) = sender as? (Int,Int),
-               let destinationVC = segue.destination as? editExcViewController {
-                destinationVC.ejercicioIndex = path
-                destinationVC.rutinaIndex = rutinaPath
-                destinationVC.semanaIndex = semanaPath
-                destinationVC.diaIndex = diasPath
-                destinationVC.modalPresentationStyle = .pageSheet
-            }
+    func didUpdateExercise(update: Int){
+        loadDay(rut_path: rutinaPath, week_path: semanaPath)
+        excCollection.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editExcPath",
+           let (path, diasPath) = sender as? (Int,Int),
+           let destinationVC = segue.destination as? editExcViewController {
+            destinationVC.ejercicioIndex = path
+            destinationVC.rutinaIndex = rutinaPath
+            destinationVC.semanaIndex = semanaPath
+            destinationVC.diaIndex = diasPath
+            destinationVC.modalPresentationStyle = .pageSheet
+            destinationVC.delegate = self
         }
+    }
 }
 
 

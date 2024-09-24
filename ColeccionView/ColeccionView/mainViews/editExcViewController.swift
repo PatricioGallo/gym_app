@@ -1,5 +1,9 @@
 import UIKit
 
+protocol editExcDelegate: AnyObject {
+    func didUpdateExercise(update: Int)
+}
+
 class editExcViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var textInput: UITextField!
@@ -12,6 +16,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     var semanaIndex:Int?
     var diaIndex: Int?
     var ejercicioIndex: Int?
+    weak var delegate: editExcDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,18 +97,22 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     private func captureInputValue() {
         if let text = textInput.text, !text.isEmpty, let peso = Int(text) {
             print("Valor ingresado: \(peso)")
-            let persona_modificada = Persona_mod(nombre: "Patricio", apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: nil)
-                
-            netWorkingProvider.shared.editInfo(id: 1, user: persona_modificada,
+            //Genero la persona mofificada
+            var persona_modificada = Persona_mod(nombre:nil, apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: [])
+            let rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
+            persona_modificada.rutinas = rutina_mod
+            generateData.modificarPersonaMod(persona: &persona_modificada, rutinaIndex: rutinaIndex!, semanaIndex: semanaIndex!, diaIndex: diaIndex!, ejercicioIndex: ejercicioIndex!, nuevoPeso: peso)
+            //Subo a la nube
+            netWorkingProvider.shared.editInfo(id: generateData.userID, user: persona_modificada,
                         success: { updatedUser in
-                            // Manejar el éxito, actualizar el estado si es necesario
+                            //local0
                             generateData.modificarPesoEnEjercicio(rutinaIndex: self.rutinaIndex!, semanaIndex: self.semanaIndex!, diaIndex: self.diaIndex!, ejercicioIndex: self.ejercicioIndex!, nuevoPeso: peso)
+                            self.delegate?.didUpdateExercise(update: 1)
                         },
                         failure: { error in
                             // Manejar el error
                             print("Error al actualizar el usuario: \(error?.localizedDescription ?? "Desconocido")")
                         })
-            
             dismissModal() // Cierra el modal
         } else {
             print("El campo está vacío o no es un número válido.")
