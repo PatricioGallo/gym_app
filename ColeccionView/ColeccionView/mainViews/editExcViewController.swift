@@ -4,6 +4,9 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var myImage: UIImageView!
+    var rutina : Rutina?
+    var semana: Semana?
+    var dia : Dias?
     var ejercicio: Ejercicio?
     var rutinaIndex:Int?
     var semanaIndex:Int?
@@ -12,7 +15,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadExc(rutinaIndex: rutinaIndex, semanaIndex: semanaIndex, diaIndex: diaIndex, ejercicioIndex: ejercicioIndex)
         // Configuración del fondo
         self.view.backgroundColor = UIColor.black // Asegúrate de que el fondo no sea transparente
 
@@ -35,6 +38,21 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
         
         // Agregar una barra de herramientas con un botón
         setupToolbar()
+    }
+    
+    func loadExc(rutinaIndex: Int?, semanaIndex: Int?, diaIndex: Int?, ejercicioIndex: Int?){
+        if let deco_rut_path = rutinaIndex{
+            rutina = generateData.newPerson?.rutinas[deco_rut_path]
+        }
+        if let deco_week_path = semanaIndex{
+            semana = rutina?.semanas[deco_week_path]
+        }
+        if let deco_dia_path = diaIndex{
+            dia = semana?.dias[deco_dia_path]
+        }
+        if let deco_exc_path = ejercicioIndex{
+            ejercicio = dia?.ejercicios[deco_exc_path]
+        }
     }
 
     func assignTitle(title: String?) {
@@ -79,8 +97,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
             netWorkingProvider.shared.editInfo(id: 1, user: persona_modificada,
                         success: { updatedUser in
                             // Manejar el éxito, actualizar el estado si es necesario
-                            generateData.modificarPesoEnEjercicio(rutinaIndex: 0, semanaIndex: 0, diaIndex: 0, ejercicioIndex: 0, nuevoPeso: peso)
-                            print("\n\n\n \(generateData.newPerson) \n\n\n")
+                            generateData.modificarPesoEnEjercicio(rutinaIndex: self.rutinaIndex!, semanaIndex: self.semanaIndex!, diaIndex: self.diaIndex!, ejercicioIndex: self.ejercicioIndex!, nuevoPeso: peso)
                         },
                         failure: { error in
                             // Manejar el error

@@ -2,7 +2,7 @@ import UIKit
 
 //Week delegate config
 protocol excViewCellDelegate: AnyObject {
-    func didSelectExc(ejercicio: Ejercicio)
+    func didSelectExc(path: Int, diasPath: Int)
 }
 
 class ejerciciosViewCell: UICollectionViewCell {
@@ -12,6 +12,7 @@ class ejerciciosViewCell: UICollectionViewCell {
     @IBOutlet weak var myTable: UITableView!
     var ejercicios: [Ejercicio]?
     weak var delegate: excViewCellDelegate?
+    var dia_index:Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,9 +62,7 @@ extension ejerciciosViewCell: UITableViewDataSource {
 //DELEGATE
 extension ejerciciosViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let ejercicio = ejercicios?[indexPath.row] {
-            delegate?.didSelectExc(ejercicio: ejercicio)
-        }
+        delegate?.didSelectExc(path: indexPath.row, diasPath: dia_index!)
     }
 }
 

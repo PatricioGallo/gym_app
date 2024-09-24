@@ -8,7 +8,7 @@
 import UIKit
 
 protocol semanaViewCellDelegate: AnyObject {
-    func didSelectSemana(dias: [Dias])
+    func didSelectSemana(path: Int)
 }
 
 
@@ -87,8 +87,6 @@ extension semanaViewCell: UITableViewDataSource {
 
 extension semanaViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let dia = semanas?[indexPath.row].dias {
-            delegate?.didSelectSemana(dias: dia)
-        }
+        delegate?.didSelectSemana(path: indexPath.row)
     }
 }

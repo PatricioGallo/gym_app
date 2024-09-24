@@ -1,7 +1,7 @@
 import UIKit
 
 protocol rutinaViewCellDelegate: AnyObject {
-    func didSelectRutina(semanas: [Semana])
+    func didSelectRutina(path: Int)
 }
 
 class rutinaViewCell: UICollectionViewCell {
@@ -85,9 +85,7 @@ extension rutinaViewCell: UITableViewDataSource {
 
 extension rutinaViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let semanas = rutinas?[indexPath.row].semanas {
-            delegate?.didSelectRutina(semanas: semanas)
-        }
+        delegate?.didSelectRutina(path: indexPath.row)
     }
 }
 
