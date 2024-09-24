@@ -6,7 +6,6 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     var persona: Persona?
     var rutinas: [Rutina] = []
-    var semanas: [Semana] = []
     var newPerson: Persona? = nil
     let myCellWidth = UIScreen.main.bounds.width
     
@@ -20,7 +19,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
     
     private func loadData(){
         
-        netWorkingProvider.shared.getUser(id: 1) { (user) in
+        netWorkingProvider.shared.getUser(id: generateData.userID) { (user) in
             DispatchQueue.main.async {
                  self.activityIndicator.stopAnimating()
                  self.newPerson = user
@@ -31,6 +30,7 @@ class ViewController: UIViewController,rutinaViewCellDelegate {
                  self.collectionView.register(UINib(nibName: "infoViewCell", bundle: nil), forCellWithReuseIdentifier: "infoCell")
                  self.collectionView.register(UINib(nibName: "rutinaViewCell", bundle: nil), forCellWithReuseIdentifier: "rutinaCell")
                  self.collectionView.reloadData()
+                generateData.newPerson = user
                 }
             } failure: { (error) in
                 DispatchQueue.main.async {
@@ -89,15 +89,15 @@ extension ViewController: UICollectionViewDataSource {
 }
 
 extension ViewController: UICollectionViewDelegate {
-    func didSelectRutina(semanas: [Semana]) {
-        performSegue(withIdentifier: "weeks_path", sender: semanas)
+    func didSelectRutina(path: Int) {
+        performSegue(withIdentifier: "weeks_path", sender: path)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "weeks_path",
-           let semanas = sender as? [Semana],
+           let path = sender as? Int,
            let destinationVC = segue.destination as? MyWeeksViewController {
-            destinationVC.semanas = semanas
+            destinationVC.rutinaPath = path
         }
     }
 }

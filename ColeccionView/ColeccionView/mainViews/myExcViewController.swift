@@ -1,33 +1,48 @@
-//
-//  myExcViewController.swift
-//  ColeccionView
-//
-//  Created by Patricio Gallo on 04/09/2024.
-//
+////
+////  myExcViewController.swift
+////  ColeccionView
+////
+////  Created by Patricio Gallo on 04/09/2024.
+////
 
 import UIKit
-
-class myExcViewController: UIViewController {
+//
+class myExcViewController: UIViewController, excViewCellDelegate, editExcDelegate{
     //OUTLETS AND VIEWS
-    var dias: Dias?
+    var dias: [Dias]?
     var ejercicio: [Ejercicio]?
+    var semana: Semana?
+    var rutina: Rutina?
     let myCellWidth = UIScreen.main.bounds.width
     @IBOutlet weak var excCollection: UICollectionView!
+    var semanaPath: Int?
+    var rutinaPath: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Ejercicios"
+        loadDay(rut_path: rutinaPath, week_path: semanaPath)
         excCollection.dataSource = self
         excCollection.register(UINib(nibName: "MyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "myCell")
         excCollection.register(UINib(nibName: "ejerciciosViewCell", bundle: nil), forCellWithReuseIdentifier: "exViewCell")
         excCollection.delegate = self
+    }
+    func loadDay(rut_path: Int?, week_path: Int?){
+        if let deco_rut_path = rut_path{
+            rutina = generateData.newPerson?.rutinas[deco_rut_path]
+        }
+        if let deco_week_path = week_path{
+            semana = rutina?.semanas[deco_week_path]
+        }
+        dias = semana?.dias
+        self.excCollection.reloadData()
     }
 }
 
 //DATASOURCE
 extension myExcViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return (dias?.count ?? 0) + 1
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
@@ -37,35 +52,14 @@ extension myExcViewController: UICollectionViewDataSource{
                     cell.myLabel.text = "Info"
                     cell.secondLabel.text = "Recorda anotar todos los pesos que hiciste en el dia y calificar el ejericio, para un mejor seguimiento."
                     return cell
-                case 1:
+                case 1 ... dias!.count+1:
                     // Configura la celda para la fila 2
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myLabel.text = "Lunes"
-                    cell.ejercicios = dias?.lunes
-                    return cell
-                case 2:
-                    // Configura la celda para la fila 3
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myLabel.text = "Martes"
-                    cell.ejercicios = dias?.martes
-                    return cell
-                case 3:
-                    // Configura la celda para la fila 4
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myLabel.text = "Miercoles"
-                    cell.ejercicios = dias?.miercoles
-                    return cell
-                case 4:
-                    // Configura la celda para la fila 5
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myLabel.text = "Jueves"
-                    cell.ejercicios = dias?.miercoles
-                    return cell
-                case 5:
-                    // Configura la celda para la fila 6
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myLabel.text = "Viernes"
-                    cell.ejercicios = dias?.miercoles
+                    cell.myLabel.text = dias?[indexPath.row - 1].nombre
+                    cell.ejercicios = dias?[indexPath.row - 1].ejercicios
+                    cell.delegate = self
+                    cell.dia_index = (indexPath.row - 1)
+                    cell.myTable.reloadData()
                     return cell
                 default:
                     // Configura la celda para cualquier otra sección
@@ -77,6 +71,30 @@ extension myExcViewController: UICollectionViewDataSource{
 }
 
 //DELEGATE
+extension myExcViewController: UICollectionViewDelegate {
+    func didSelectExc(path: Int, diasPath: Int) {
+            performSegue(withIdentifier: "editExcPath", sender: (path, diasPath))
+        }
+    func didUpdateExercise(update: Int){
+        loadDay(rut_path: rutinaPath, week_path: semanaPath)
+        excCollection.reloadData()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editExcPath",
+           let (path, diasPath) = sender as? (Int,Int),
+           let destinationVC = segue.destination as? editExcViewController {
+            destinationVC.ejercicioIndex = path
+            destinationVC.rutinaIndex = rutinaPath
+            destinationVC.semanaIndex = semanaPath
+            destinationVC.diaIndex = diasPath
+            destinationVC.modalPresentationStyle = .pageSheet
+            destinationVC.delegate = self
+        }
+    }
+}
+
+
+//DELEGATE LAYOUT
 extension myExcViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.row {

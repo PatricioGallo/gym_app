@@ -7,38 +7,49 @@
 
 import Foundation
 
-struct Ejercicio: Decodable {
-    let nombre: String?
-    let peso: Int?
+struct Ejercicio: Codable {
+    var nombre: String?
+    var peso: Int?
+    var peso_anterior : Int?
+    var info: String?
+    var serie: Int?
+    var repe: Int?
+    var fecha: String?
+    var id_exc: Int?
 }
 
-struct Dias: Decodable {
-    let lunes: [Ejercicio]?
-    let martes: [Ejercicio]?
-    let miercoles: [Ejercicio]?
-    let jueves: [Ejercicio]?
-    let viernes: [Ejercicio]?
+struct Dias: Codable {
+    var nombre: String
+    var ejercicios: [Ejercicio]
 }
 
-struct Semana: Decodable {
-    let numero: Int
-    let dias: Dias
+struct Semana: Codable {
+    var numero: Int
+    var dias: [Dias]
 }
 
-struct Rutina: Decodable {
-    let nombre: String
-    let semanas: [Semana]
+struct Rutina: Codable {
+    var nombre: String
+    var semanas: [Semana]
 }
 
-struct Persona: Decodable {
-    let id: String //TODO changes in anothers APIS
-    let nombre: String
-    let apellido: String
-    let edad: Int
-    let mail: String
-    let contrasena: String
-    let rutinas: [Rutina]
+struct Messures: Codable{
+    var date: String?
+    var data: Int?
 }
+
+struct Persona: Codable {
+    var id: String //TODO changes in anothers APIS
+    var nombre: String
+    var apellido: String
+    var edad: Int
+    var mail: String
+    var contrasena: String
+    var rutinas: [Rutina]
+    var messures:[Messures]
+}
+
+
 
 
 

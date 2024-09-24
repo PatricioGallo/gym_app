@@ -1,26 +1,37 @@
+////
+////  MyWeeksViewController.swift
+////  ColeccionView
+////
+////  Created by Patricio Gallo on 04/09/2024.
+////
 //
-//  MyWeeksViewController.swift
-//  ColeccionView
-//
-//  Created by Patricio Gallo on 04/09/2024.
-//
-
 import UIKit
 
 class MyWeeksViewController: UIViewController, semanaViewCellDelegate {
+
     //OUTLETS AND VARIABLES
     @IBOutlet weak var myWeeksViews: UICollectionView!
     let myCellWidth = UIScreen.main.bounds.width
     var semanas: [Semana]?
     var ejercicios:[Ejercicio]?
-    var dias: Dias?
+    var dias: [Dias]?
+    var rutinaPath: Int?
+    var rutina:Rutina?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Semanas"
+        loadWeek(path: rutinaPath)
         myWeeksViews.dataSource = self
         myWeeksViews.register(UINib(nibName: "semanaViewCell", bundle: nil), forCellWithReuseIdentifier: "weekTable")
         myWeeksViews.delegate = self
+    }
+    func loadWeek(path: Int?){
+        if let deco_path = path{
+            rutina = generateData.newPerson?.rutinas[deco_path]
+            semanas = rutina?.semanas
+            self.myWeeksViews.reloadData()
+        }
     }
 }
 
@@ -42,14 +53,15 @@ extension MyWeeksViewController: UICollectionViewDataSource{
 
 //DELEGATE
 extension MyWeeksViewController: UICollectionViewDelegate {
-        func didSelectSemana(dias: Dias) {
-            performSegue(withIdentifier: "ex_path", sender: dias)
+    func didSelectSemana(path: Int) {
+            performSegue(withIdentifier: "ex_path", sender: path)
         }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "ex_path",
-               let dias = sender as? Dias,
+               let path = sender as? Int,
                let destinationVC = segue.destination as? myExcViewController {
-                destinationVC.dias = dias
+                destinationVC.semanaPath = path
+                destinationVC.rutinaPath = rutinaPath
             }
         }
 }

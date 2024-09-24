@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B015CF0B2C964A3C007ABFE4 /* semanaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */; };
 		B015CF0C2C964A3C007ABFE4 /* semanaViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */; };
+		B01D23E82CA1A9CE002DB76C /* editExcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01D23E72CA1A9CE002DB76C /* editExcViewController.swift */; };
 		B062436A2C8FDCFF0071E125 /* ExcCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06243682C8FDCFF0071E125 /* ExcCollectionViewCell.swift */; };
 		B062436B2C8FDCFF0071E125 /* ExcCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06243692C8FDCFF0071E125 /* ExcCollectionViewCell.xib */; };
 		B06243902C94A91F0071E125 /* headerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B062438E2C94A91F0071E125 /* headerCell.swift */; };
@@ -36,11 +37,14 @@
 		B0E270CA2C9CAC3E00FE0A95 /* netWorkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E270C92C9CAC3E00FE0A95 /* netWorkingProvider.swift */; };
 		B0E270CD2C9CACA100FE0A95 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B0E270CC2C9CACA100FE0A95 /* Alamofire */; };
 		B0E270CF2C9CACC000FE0A95 /* userData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E270CE2C9CACC000FE0A95 /* userData.swift */; };
+		B0F091BC2CA1FC8B004A70F8 /* generateData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F091BB2CA1FC8B004A70F8 /* generateData.swift */; };
+		B0F80C442C9DF5D700E8F419 /* user_send_data.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F80C432C9DF5D700E8F419 /* user_send_data.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B015CF092C964A3C007ABFE4 /* semanaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = semanaViewCell.swift; sourceTree = "<group>"; };
 		B015CF0A2C964A3C007ABFE4 /* semanaViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = semanaViewCell.xib; sourceTree = "<group>"; };
+		B01D23E72CA1A9CE002DB76C /* editExcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editExcViewController.swift; sourceTree = "<group>"; };
 		B06243682C8FDCFF0071E125 /* ExcCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcCollectionViewCell.swift; sourceTree = "<group>"; };
 		B06243692C8FDCFF0071E125 /* ExcCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExcCollectionViewCell.xib; sourceTree = "<group>"; };
 		B062438E2C94A91F0071E125 /* headerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerCell.swift; sourceTree = "<group>"; };
@@ -69,6 +73,8 @@
 		B08ECFFF2C98B3B7002A5B97 /* ejercicioTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ejercicioTableViewCell.xib; sourceTree = "<group>"; };
 		B0E270C92C9CAC3E00FE0A95 /* netWorkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netWorkingProvider.swift; sourceTree = "<group>"; };
 		B0E270CE2C9CACC000FE0A95 /* userData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userData.swift; sourceTree = "<group>"; };
+		B0F091BB2CA1FC8B004A70F8 /* generateData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateData.swift; sourceTree = "<group>"; };
+		B0F80C432C9DF5D700E8F419 /* user_send_data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user_send_data.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				B0E270CE2C9CACC000FE0A95 /* userData.swift */,
+				B0F80C432C9DF5D700E8F419 /* user_send_data.swift */,
+				B0F091BB2CA1FC8B004A70F8 /* generateData.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 				B08C46B22C87DE5000A940F2 /* ViewController.swift */,
 				B08C46CC2C8805FE00A940F2 /* MyWeeksViewController.swift */,
 				B08C46D02C88095300A940F2 /* myExcViewController.swift */,
+				B01D23E72CA1A9CE002DB76C /* editExcViewController.swift */,
 			);
 			path = mainViews;
 			sourceTree = "<group>";
@@ -344,7 +353,9 @@
 				B08C46B32C87DE5000A940F2 /* ViewController.swift in Sources */,
 				B08C46AF2C87DE5000A940F2 /* AppDelegate.swift in Sources */,
 				B062439C2C94C2ED0071E125 /* infoViewCell.swift in Sources */,
+				B0F091BC2CA1FC8B004A70F8 /* generateData.swift in Sources */,
 				B062436A2C8FDCFF0071E125 /* ExcCollectionViewCell.swift in Sources */,
+				B0F80C442C9DF5D700E8F419 /* user_send_data.swift in Sources */,
 				B08C46C42C87E36000A940F2 /* MyCollectionViewCell.swift in Sources */,
 				B06243902C94A91F0071E125 /* headerCell.swift in Sources */,
 				B0E270CA2C9CAC3E00FE0A95 /* netWorkingProvider.swift in Sources */,
@@ -355,6 +366,7 @@
 				B015CF0B2C964A3C007ABFE4 /* semanaViewCell.swift in Sources */,
 				B06243942C94B9E30071E125 /* rutinaViewCell.swift in Sources */,
 				B08C46D12C88095300A940F2 /* myExcViewController.swift in Sources */,
+				B01D23E82CA1A9CE002DB76C /* editExcViewController.swift in Sources */,
 				B08C46CE2C8805FE00A940F2 /* MyWeeksViewController.swift in Sources */,
 				B08C46B12C87DE5000A940F2 /* SceneDelegate.swift in Sources */,
 			);
