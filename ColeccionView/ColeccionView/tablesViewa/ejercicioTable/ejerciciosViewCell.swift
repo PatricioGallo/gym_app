@@ -31,8 +31,16 @@ class ejerciciosViewCell: UICollectionViewCell {
         myView.layer.masksToBounds = false
     }
     
-    func has_peso(_ ejercicio: Int?) -> String {
-        if let peso = ejercicio {
+    func has_peso(_ peso: Int?) -> String {
+        if let peso_deco = peso {
+            return ", actual: \(peso_deco) Kg"
+        } else {
+            return ""
+        }
+    }
+    
+    func has_peso_anterior(_ peso_anterior: Int?) -> String {
+        if let peso = peso_anterior {
             return "Peso anterior: \(peso) Kg"
         } else {
             return "Sin peso"
@@ -52,7 +60,7 @@ extension ejerciciosViewCell: UITableViewDataSource {
         if let ejercicio = ejercicios?[indexPath.row] {
             cell.titleLabel.text = "\(ejercicio.nombre ?? "")"
             cell.middleLabel.text = "\(ejercicio.serie ?? 0) series x 10 \(ejercicio.repe ?? 0)"
-            cell.bottomLabel.text = has_peso(ejercicio.peso)
+            cell.bottomLabel.text = "\(has_peso_anterior(ejercicio.peso_anterior))\(has_peso(ejercicio.peso))"
             cell.newBottomLabel.text = "Último entrenamiento: \(ejercicio.fecha ?? "")"
         }
         return cell
