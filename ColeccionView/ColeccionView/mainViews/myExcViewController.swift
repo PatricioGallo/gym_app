@@ -42,7 +42,7 @@ class myExcViewController: UIViewController, excViewCellDelegate, editExcDelegat
 //DATASOURCE
 extension myExcViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dias!.count+1
+        return (dias?.count ?? 0) + 1
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.row {
@@ -55,11 +55,11 @@ extension myExcViewController: UICollectionViewDataSource{
                 case 1 ... dias!.count+1:
                     // Configura la celda para la fila 2
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "exViewCell", for: indexPath) as! ejerciciosViewCell
-                    cell.myTable.reloadData()
-                    cell.dia_index = (indexPath.row - 1)
                     cell.myLabel.text = dias?[indexPath.row - 1].nombre
                     cell.ejercicios = dias?[indexPath.row - 1].ejercicios
                     cell.delegate = self
+                    cell.dia_index = (indexPath.row - 1)
+                    cell.myTable.reloadData()
                     return cell
                 default:
                     // Configura la celda para cualquier otra sección

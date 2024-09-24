@@ -10,6 +10,12 @@ import Foundation
 struct Ejercicio: Codable {
     var nombre: String?
     var peso: Int?
+    var peso_anterior : Int?
+    var info: String?
+    var serie: Int?
+    var repe: Int?
+    var fecha: String?
+    var id_exc: Int?
 }
 
 struct Dias: Codable {
@@ -27,6 +33,11 @@ struct Rutina: Codable {
     var semanas: [Semana]
 }
 
+struct Messures: Codable{
+    var date: String?
+    var data: Int?
+}
+
 struct Persona: Codable {
     var id: String //TODO changes in anothers APIS
     var nombre: String
@@ -35,7 +46,9 @@ struct Persona: Codable {
     var mail: String
     var contrasena: String
     var rutinas: [Rutina]
+    var messures:[Messures]
 }
+
 
 
 
