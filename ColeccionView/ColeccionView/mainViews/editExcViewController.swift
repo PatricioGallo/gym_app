@@ -8,6 +8,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var myImage: UIImageView!
+    @IBOutlet weak var infoLabel: UILabel!
     var rutina : Rutina?
     var semana: Semana?
     var dia : Dias?
@@ -43,6 +44,8 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
         
         // Agregar una barra de herramientas con un botón
         setupToolbar()
+        
+        infoLabel.text = " Agarra la barra con las manos un poco más anchas que el ancho de los hombros y levántala desde el soporte, extendiendo los brazos hacia arriba. Baja la barra controladamente hacia tu pecho, manteniendo los codos a un ángulo de aproximadamente 45 grados respecto al torso. Asegúrate de que la barra toque suavemente tu pecho antes de empujarla de nuevo hacia arriba hasta que los brazos estén completamente extendidos."
     }
     
     func loadExc(rutinaIndex: Int?, semanaIndex: Int?, diaIndex: Int?, ejercicioIndex: Int?){

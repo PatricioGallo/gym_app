@@ -59,7 +59,7 @@ extension ejerciciosViewCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ejCell", for: indexPath) as! ejercicioTableViewCell
         if let ejercicio = ejercicios?[indexPath.row] {
             cell.titleLabel.text = "\(ejercicio.nombre ?? "")"
-            cell.middleLabel.text = "\(ejercicio.serie ?? 0) series x 10 \(ejercicio.repe ?? 0)"
+            cell.middleLabel.text = "\(ejercicio.serie ?? 0) series x \(ejercicio.repe ?? 0) repes"
             cell.bottomLabel.text = "\(has_peso_anterior(ejercicio.peso_anterior))\(has_peso(ejercicio.peso))"
             cell.newBottomLabel.text = "Último entrenamiento: \(ejercicio.fecha ?? "")"
         }
