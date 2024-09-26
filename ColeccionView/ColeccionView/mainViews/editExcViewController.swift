@@ -17,6 +17,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     var semanaIndex:Int?
     var diaIndex: Int?
     var ejercicioIndex: Int?
+    var historial: [Historial] = []
     weak var delegate: editExcDelegate?
 
     override func viewDidLoad() {
@@ -100,14 +101,23 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     private func captureInputValue() {
         if let text = textInput.text, !text.isEmpty, let peso = Int(text) {
             //Genero la persona mofificada
-            var persona_modificada = Persona_mod(nombre:nil, apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: [], messures: nil)
-            let rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
+            var persona_modificada = Persona_mod(nombre:nil, apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: [], messures: nil, historial: [])
+            //Agarro los array ya existentes
+            historial = generateData.newPerson?.historial ?? []
+            var rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
+            //modifico el array historial
+            let obHistorial = Historial(id_exc: ejercicio?.id_exc, peso: peso, fecha: "26-09-2024")
+            historial.append(obHistorial)
+            //Agrego los cambios a persona
+            persona_modificada.historial = historial
             persona_modificada.rutinas = rutina_mod
+            //modifico el array rutinas
             generateData.modificarPersonaMod(persona: &persona_modificada, rutinaIndex: rutinaIndex!, semanaIndex: semanaIndex!, diaIndex: diaIndex!, ejercicioIndex: ejercicioIndex!, nuevoPeso: peso)
             //Subo a la nube
             netWorkingProvider.shared.editInfo(id: generateData.userID, user: persona_modificada,
                         success: { updatedUser in
-                            //local0
+                            //cambios del array local
+                            generateData.newPerson?.historial = self.historial
                             generateData.modificarPesoEnEjercicio(rutinaIndex: self.rutinaIndex!, semanaIndex: self.semanaIndex!, diaIndex: self.diaIndex!, ejercicioIndex: self.ejercicioIndex!, nuevoPeso: peso)
                             self.delegate?.didUpdateExercise(update: 1)
                         },
@@ -115,6 +125,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
                             // Manejar el error
                             print("Error al actualizar el usuario: \(error?.localizedDescription ?? "Desconocido")")
                         })
+            
             dismissModal() // Cierra el modal
         } else {
             print("El campo está vacío o no es un número válido.")
