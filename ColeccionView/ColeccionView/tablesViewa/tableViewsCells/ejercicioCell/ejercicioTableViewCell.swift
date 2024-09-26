@@ -18,18 +18,21 @@ class ejercicioTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        //Cell Config
         myCell.backgroundColor = UIColor(red: 0.05, green: 0.05, blue: 0.05, alpha: 1.0)
+        //Label Config
         titleLabel.textColor = .white
-        middleLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0) // Gris más claro
-        bottomLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0) // Gris más claro
-        newBottomLabel.textColor = .darkGray
-
-        // Ajuste del tamaño y tipo de letra para una mejor estética
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        middleLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         middleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        middleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        bottomLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         bottomLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         newBottomLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        newBottomLabel.textColor = .darkGray
+        //Image Config
+        myImage.layer.cornerRadius = myImage.frame.size.width / 2
+        myImage.clipsToBounds = true
     }
 
     

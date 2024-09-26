@@ -99,7 +99,6 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
 
     private func captureInputValue() {
         if let text = textInput.text, !text.isEmpty, let peso = Int(text) {
-            print("Valor ingresado: \(peso)")
             //Genero la persona mofificada
             var persona_modificada = Persona_mod(nombre:nil, apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: [], messures: nil)
             let rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
