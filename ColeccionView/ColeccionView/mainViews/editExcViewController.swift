@@ -5,6 +5,7 @@ protocol editExcDelegate: AnyObject {
 }
 
 class editExcViewController: UIViewController, UITextFieldDelegate {
+    //Variables and  Outlets
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var myImage: UIImageView!
@@ -23,30 +24,23 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadExc(rutinaIndex: rutinaIndex, semanaIndex: semanaIndex, diaIndex: diaIndex, ejercicioIndex: ejercicioIndex)
-        // Configuración del fondo
+        //View Config
         self.view.backgroundColor = UIColor.black // Asegúrate de que el fondo no sea transparente
-
-        // Configuración del Label
+        //Label Config
         tittleLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         tittleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         assignTitle(title: ejercicio?.nombre)
-
-        // Configuración del TextInput
+        //TextInput Config
         placeHolderConfig(peso: ejercicio?.peso)
-        textInput.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+        textInput.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0)
         textInput.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         textInput.textAlignment = .center
-        
-        // Asignar el delegate
         textInput.delegate = self
-        
-        // Configuración del Modal
+        infoLabel.text = ejercicio?.info
+        //Modal Config
         self.modalPresentationStyle = .pageSheet
-        
-        // Agregar una barra de herramientas con un botón
+        // Toolbar Config
         setupToolbar()
-        
-        infoLabel.text = " Agarra la barra con las manos un poco más anchas que el ancho de los hombros y levántala desde el soporte, extendiendo los brazos hacia arriba. Baja la barra controladamente hacia tu pecho, manteniendo los codos a un ángulo de aproximadamente 45 grados respecto al torso. Asegúrate de que la barra toque suavemente tu pecho antes de empujarla de nuevo hacia arriba hasta que los brazos estén completamente extendidos."
     }
     
     func loadExc(rutinaIndex: Int?, semanaIndex: Int?, diaIndex: Int?, ejercicioIndex: Int?){
@@ -104,7 +98,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
             var persona_modificada = Persona_mod(nombre:nil, apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: [], messures: nil, historial: [])
             //Agarro los array ya existentes
             historial = generateData.newPerson?.historial ?? []
-            var rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
+            let rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
             //modifico el array historial
             let obHistorial = Historial(id_exc: ejercicio?.id_exc, peso: peso, fecha: "26-09-2024")
             historial.append(obHistorial)
@@ -143,11 +137,9 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
         if string.isEmpty {
             return true
         }
-
         // Verificar que la nueva cadena solo contenga dígitos
         let allowedCharacterSet = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
-        
         return allowedCharacterSet.isSuperset(of: characterSet)
     }
 }
