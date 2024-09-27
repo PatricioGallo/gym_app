@@ -38,6 +38,12 @@ struct Messures: Codable{
     var data: Int?
 }
 
+struct Historial: Codable{
+    var id_exc : Int?
+    var peso: Int?
+    var fecha: String?
+}
+
 struct Persona: Codable {
     var id: String //TODO changes in anothers APIS
     var nombre: String
@@ -47,6 +53,7 @@ struct Persona: Codable {
     var contrasena: String
     var rutinas: [Rutina]
     var messures:[Messures]
+    var historial : [Historial]?
 }
 
 

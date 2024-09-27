@@ -59,11 +59,12 @@ class rutinaViewCell: UICollectionViewCell {
             }
         }
         
-        if(ejTotal == 0 && ejNil > 0 ){
-            return ""
-        } else{
-            return "\((ejTotal != 0) ? Int(ejConPeso / ejTotal * 100) : 0) %"
-        }
+         if ejTotal == 0 && ejNil > 0 {
+             return ""
+         } else {
+             let porcentaje = (ejTotal != 0) ? (Double(ejConPeso) / Double(ejTotal)) * 100 : 0
+             return "\(Int(porcentaje)) %"
+         }
         
     }//Fin porcCalcRutina
 }
