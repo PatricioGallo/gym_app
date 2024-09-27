@@ -5,9 +5,11 @@ protocol editExcDelegate: AnyObject {
 }
 
 class editExcViewController: UIViewController, UITextFieldDelegate {
+    //Variables and  Outlets
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var textInput: UITextField!
     @IBOutlet weak var myImage: UIImageView!
+    @IBOutlet weak var infoLabel: UILabel!
     var rutina : Rutina?
     var semana: Semana?
     var dia : Dias?
@@ -16,32 +18,28 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
     var semanaIndex:Int?
     var diaIndex: Int?
     var ejercicioIndex: Int?
+    var historial: [Historial] = []
     weak var delegate: editExcDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadExc(rutinaIndex: rutinaIndex, semanaIndex: semanaIndex, diaIndex: diaIndex, ejercicioIndex: ejercicioIndex)
-        // Configuración del fondo
+        //View Config
         self.view.backgroundColor = UIColor.black // Asegúrate de que el fondo no sea transparente
-
-        // Configuración del Label
+        //Label Config
         tittleLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         tittleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         assignTitle(title: ejercicio?.nombre)
-
-        // Configuración del TextInput
+        //TextInput Config
         placeHolderConfig(peso: ejercicio?.peso)
-        textInput.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+        textInput.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1.0)
         textInput.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         textInput.textAlignment = .center
-        
-        // Asignar el delegate
         textInput.delegate = self
-        
-        // Configuración del Modal
+        infoLabel.text = ejercicio?.info
+        //Modal Config
         self.modalPresentationStyle = .pageSheet
-        
-        // Agregar una barra de herramientas con un botón
+        // Toolbar Config
         setupToolbar()
     }
     
@@ -96,16 +94,24 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
 
     private func captureInputValue() {
         if let text = textInput.text, !text.isEmpty, let peso = Int(text) {
-            print("Valor ingresado: \(peso)")
             //Genero la persona mofificada
-            var persona_modificada = Persona_mod(nombre:nil, apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: [], messures: nil)
+            var persona_modificada = Persona_mod(nombre:nil, apellido: nil, edad: nil, mail: nil, contrasena: nil, rutinas: [], messures: nil, historial: [])
+            //Agarro los array ya existentes
+            historial = generateData.newPerson?.historial ?? []
             let rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
+            //modifico el array historial
+            let obHistorial = Historial(id_exc: ejercicio?.id_exc, peso: peso, fecha: "26-09-2024")
+            historial.append(obHistorial)
+            //Agrego los cambios a persona
+            persona_modificada.historial = historial
             persona_modificada.rutinas = rutina_mod
+            //modifico el array rutinas
             generateData.modificarPersonaMod(persona: &persona_modificada, rutinaIndex: rutinaIndex!, semanaIndex: semanaIndex!, diaIndex: diaIndex!, ejercicioIndex: ejercicioIndex!, nuevoPeso: peso)
             //Subo a la nube
             netWorkingProvider.shared.editInfo(id: generateData.userID, user: persona_modificada,
                         success: { updatedUser in
-                            //local0
+                            //cambios del array local
+                            generateData.newPerson?.historial = self.historial
                             generateData.modificarPesoEnEjercicio(rutinaIndex: self.rutinaIndex!, semanaIndex: self.semanaIndex!, diaIndex: self.diaIndex!, ejercicioIndex: self.ejercicioIndex!, nuevoPeso: peso)
                             self.delegate?.didUpdateExercise(update: 1)
                         },
@@ -113,6 +119,7 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
                             // Manejar el error
                             print("Error al actualizar el usuario: \(error?.localizedDescription ?? "Desconocido")")
                         })
+            
             dismissModal() // Cierra el modal
         } else {
             print("El campo está vacío o no es un número válido.")
@@ -130,11 +137,9 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
         if string.isEmpty {
             return true
         }
-
         // Verificar que la nueva cadena solo contenga dígitos
         let allowedCharacterSet = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
-        
         return allowedCharacterSet.isSuperset(of: characterSet)
     }
 }

@@ -29,14 +29,36 @@ class ejerciciosViewCell: UICollectionViewCell {
         myView.backgroundColor = UIColor(red: 0.05, green: 0.05, blue: 0.05, alpha: 1.0)
         myView.layer.cornerRadius = 10
         myView.layer.masksToBounds = false
+        //Logica del peso anterior
     }
     
-    func has_peso(_ ejercicio: Int?) -> String {
-        if let peso = ejercicio {
+    func has_peso(_ peso: Int?) -> String {
+        if let peso_deco = peso {
+            if (peso_deco == 0){
+                return ""
+            }
+            return ", actual: \(peso_deco) Kg"
+        } else {
+            return ""
+        }
+    }
+    
+    func has_peso_anterior(_ peso_anterior: Int?) -> String {
+        if let peso = peso_anterior {
             return "Peso anterior: \(peso) Kg"
         } else {
             return "Sin peso"
         }
+    }
+    
+    func peso_anterior (_ index: Int?) -> String{
+        let array = generateData.newPerson?.historial
+        for elemento in array!.reversed(){
+            if (elemento.id_exc == index){
+                return "Peso anterior: \(elemento.peso ?? 0) Kg"
+            }
+        }
+        return "Sin peso anterior"
     }
 
 }
@@ -51,8 +73,8 @@ extension ejerciciosViewCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ejCell", for: indexPath) as! ejercicioTableViewCell
         if let ejercicio = ejercicios?[indexPath.row] {
             cell.titleLabel.text = "\(ejercicio.nombre ?? "")"
-            cell.middleLabel.text = "\(ejercicio.serie ?? 0) series x 10 \(ejercicio.repe ?? 0)"
-            cell.bottomLabel.text = has_peso(ejercicio.peso)
+            cell.middleLabel.text = "\(ejercicio.serie ?? 0) series x \(ejercicio.repe ?? 0) repes"
+            cell.bottomLabel.text = "\(peso_anterior(ejercicio.id_exc)) \(has_peso(ejercicio.peso))"
             cell.newBottomLabel.text = "Último entrenamiento: \(ejercicio.fecha ?? "")"
         }
         return cell

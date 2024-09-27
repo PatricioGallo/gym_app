@@ -62,7 +62,7 @@ extension ViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as! infoViewCell
             if let person = newPerson {
                 cell.labelTitle.text = "\(person.nombre) repasa tus ultimos pesos"
-                cell.labelMid.text = "75 KG"
+                cell.labelMid.text = "\(person.messures[person.messures.count - 1].data ?? 0) KG"
             } else {
                 cell.labelTitle.text = ""
                 cell.labelMid.text = ""
