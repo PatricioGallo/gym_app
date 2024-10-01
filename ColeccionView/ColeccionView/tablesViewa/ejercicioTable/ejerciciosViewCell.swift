@@ -13,6 +13,7 @@ class ejerciciosViewCell: UICollectionViewCell {
     var ejercicios: [Ejercicio]?
     weak var delegate: excViewCellDelegate?
     var dia_index:Int?
+    var newPeso:Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +38,7 @@ class ejerciciosViewCell: UICollectionViewCell {
             if (peso_deco == 0){
                 return ""
             }
+            newPeso = true
             return ", actual: \(peso_deco) Kg"
         } else {
             return ""
@@ -53,12 +55,31 @@ class ejerciciosViewCell: UICollectionViewCell {
     
     func peso_anterior (_ index: Int?) -> String{
         let array = generateData.newPerson?.historial
+        var flag = 0
         for elemento in array!.reversed(){
+            if( newPeso == false){
+                if (elemento.id_exc == index){
+                    return "Peso anterior: \(elemento.peso ?? 0) Kg"
+                }
+            }
             if (elemento.id_exc == index){
+                flag = flag + 1
+            }
+            if(flag == 2){
                 return "Peso anterior: \(elemento.peso ?? 0) Kg"
             }
         }
         return "Sin peso anterior"
+    }
+    
+    func fecha_anterior (_ index: Int?) -> String{
+        let array = generateData.newPerson?.historial
+        for elemento in array!.reversed(){
+            if (elemento.id_exc == index){
+                return "Ultimo entrenamiento: \(elemento.fecha ?? "")"
+            }
+        }
+        return ""
     }
 
 }
@@ -74,8 +95,9 @@ extension ejerciciosViewCell: UITableViewDataSource {
         if let ejercicio = ejercicios?[indexPath.row] {
             cell.titleLabel.text = "\(ejercicio.nombre ?? "")"
             cell.middleLabel.text = "\(ejercicio.serie ?? 0) series x \(ejercicio.repe ?? 0) repes"
-            cell.bottomLabel.text = "\(peso_anterior(ejercicio.id_exc)) \(has_peso(ejercicio.peso))"
-            cell.newBottomLabel.text = "Último entrenamiento: \(ejercicio.fecha ?? "")"
+            cell.bottomLabel.text = peso_anterior(ejercicio.id_exc)
+            cell.secondBottomLabel.text = has_peso(ejercicio.peso)
+            cell.newBottomLabel.text = fecha_anterior(ejercicio.id_exc)
         }
         return cell
     }

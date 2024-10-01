@@ -15,7 +15,7 @@ class ejercicioTableViewCell: UITableViewCell {
     @IBOutlet weak var myCell: UIView!
     @IBOutlet weak var newBottomLabel: UILabel!
     @IBOutlet weak var middleLabel: UILabel!
-    
+    @IBOutlet weak var secondBottomLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         //Cell Config
@@ -25,9 +25,10 @@ class ejercicioTableViewCell: UITableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         middleLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         middleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        middleLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         bottomLabel.textColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         bottomLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        secondBottomLabel.textColor = UIColor(red: 0.0, green: 0.7, blue: 0.0, alpha: 1.0) 
+        secondBottomLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         newBottomLabel.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         newBottomLabel.textColor = .darkGray
         //Image Config
