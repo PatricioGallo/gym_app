@@ -100,7 +100,11 @@ class editExcViewController: UIViewController, UITextFieldDelegate {
             historial = generateData.newPerson?.historial ?? []
             let rutina_mod: [Rutina] = generateData.newPerson?.rutinas ?? []
             //modifico el array historial
-            let obHistorial = Historial(id_exc: ejercicio?.id_exc, peso: peso, fecha: "26-09-2024")
+            let fechaActual = Date()
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd-MM-yyyy"
+            let fechaFormateada = formatter.string(from: fechaActual)
+            let obHistorial = Historial(id_exc: ejercicio?.id_exc, peso: peso, fecha: fechaFormateada)
             historial.append(obHistorial)
             //Agrego los cambios a persona
             persona_modificada.historial = historial
